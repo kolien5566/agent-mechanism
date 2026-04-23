@@ -1,0 +1,38 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="40" fill="#F5F4ED"/>
+  <text x="120" y="136" fill="#141413" font-size="56" font-family="Georgia, serif">Skill 不是一句 prompt，而是一套做事方法包</text>
+  <text x="122" y="188" fill="#5E5D59" font-size="26" font-family="Arial, sans-serif">一个 skill 往往把说明、脚本、文档、模板、约束一起打包，让 agent 能按固定套路做事。</text>
+
+  <rect x="590" y="288" width="420" height="262" rx="28" fill="#C96442"/>
+  <text x="740" y="380" fill="#FAF9F5" font-size="44" font-family="Georgia, serif">Skill</text>
+  <text x="690" y="442" fill="#FAF9F5" font-size="28" font-family="Arial, sans-serif">一整套“做这类事的方法”</text>
+
+  <rect x="164" y="250" width="270" height="150" rx="24" fill="#FFF7F1" stroke="#EAD1C7" stroke-width="2"/>
+  <text x="208" y="318" fill="#141413" font-size="34" font-family="Georgia, serif">SKILL.md</text>
+  <text x="208" y="370" fill="#5E5D59" font-size="22" font-family="Arial, sans-serif">写清楚：怎么做、按什么顺序做</text>
+
+  <rect x="164" y="494" width="270" height="150" rx="24" fill="#FFF7F1" stroke="#EAD1C7" stroke-width="2"/>
+  <text x="208" y="562" fill="#141413" font-size="34" font-family="Georgia, serif">Scripts</text>
+  <text x="208" y="614" fill="#5E5D59" font-size="22" font-family="Arial, sans-serif">把常用动作变成脚本，而不是重复手工做</text>
+
+  <rect x="1166" y="250" width="270" height="150" rx="24" fill="#FAF9F5" stroke="#F0EEE6" stroke-width="2"/>
+  <text x="1208" y="318" fill="#141413" font-size="34" font-family="Georgia, serif">Docs / Assets</text>
+  <text x="1208" y="370" fill="#5E5D59" font-size="22" font-family="Arial, sans-serif">参考资料、模板、示例和固定资源</text>
+
+  <rect x="1166" y="494" width="270" height="150" rx="24" fill="#FAF9F5" stroke="#F0EEE6" stroke-width="2"/>
+  <text x="1208" y="562" fill="#141413" font-size="34" font-family="Georgia, serif">Constraints</text>
+  <text x="1208" y="614" fill="#5E5D59" font-size="22" font-family="Arial, sans-serif">工具边界、流程要求、输出格式</text>
+
+  <path d="M434 326H560" stroke="#C96442" stroke-width="8" stroke-linecap="round"/>
+  <path d="M542 308L578 326L542 344" fill="none" stroke="#C96442" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M434 570H560" stroke="#C96442" stroke-width="8" stroke-linecap="round"/>
+  <path d="M542 552L578 570L542 588" fill="none" stroke="#C96442" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1040 326H1166" stroke="#C96442" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1148 308L1184 326L1148 344" fill="none" stroke="#C96442" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1040 570H1166" stroke="#C96442" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1148 552L1184 570L1148 588" fill="none" stroke="#C96442" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="202" y="744" width="1198" height="90" rx="22" fill="#EFE9DF"/>
+  <text x="240" y="800" fill="#C96442" font-size="28" font-family="Arial, sans-serif" font-weight="700">课堂讲法：</text>
+  <text x="380" y="800" fill="#141413" font-size="28" font-family="Arial, sans-serif">Tool 是“给 agent 一只手”，Skill 是“教 agent 一套手法”。</text>
+</svg>

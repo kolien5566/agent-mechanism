@@ -1,0 +1,424 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic:
+      - link "Skip to main content" [ref=e3] [cursor=pointer]:
+        - /url: "#main-content"
+      - link "Skip to footer" [ref=e4] [cursor=pointer]:
+        - /url: "#footer"
+    - generic [ref=e5]:
+      - link "Home" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - list [ref=e11]:
+            - listitem [ref=e12] [cursor=pointer]:
+              - link "Research" [ref=e13]:
+                - /url: /research
+            - listitem [ref=e14] [cursor=pointer]:
+              - link "Economic Futures" [ref=e15]:
+                - /url: /economic-futures
+            - listitem [ref=e16] [cursor=pointer]:
+              - button "Commitments" [ref=e17]:
+                - generic [ref=e18]: Commitments
+                - img [ref=e19]
+            - listitem [ref=e21] [cursor=pointer]:
+              - button "Learn" [ref=e22]:
+                - generic [ref=e23]: Learn
+                - img [ref=e24]
+            - listitem [ref=e26] [cursor=pointer]:
+              - link "News" [ref=e27]:
+                - /url: /news
+        - generic [ref=e28]:
+          - link "Try Claude" [ref=e29] [cursor=pointer]:
+            - /url: https://claude.ai/
+          - img [ref=e31] [cursor=pointer]
+  - main [ref=e33]:
+    - article [ref=e34]:
+      - generic [ref=e37]:
+        - heading "Claude Code by Anthropic" [level=1] [ref=e39]
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: Claude Code is an agentic coding system that reads your codebase, makes changes across files, runs tests, and delivers committed code. For builders without an engineering background, it's an entry point to software development that didn't exist until recently.
+          - link "Get started" [ref=e44] [cursor=pointer]:
+            - /url: https://claude.com/product/claude-code
+            - generic [ref=e45]: Get started
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Agentic, not autocomplete" [level=2] [ref=e51]
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: Describe what you want to build, test, iterate, or ship. Claude Code handles the rest.
+            - link "Explore Claude Code" [ref=e55] [cursor=pointer]:
+              - /url: https://claude.com/product/claude-code
+              - generic [ref=e56]: Explore Claude Code
+              - img [ref=e58]
+        - figure [ref=e61]:
+          - button "Play video" [ref=e63] [cursor=pointer]:
+            - img "Video thumbnail" [ref=e64]
+            - generic:
+              - img
+      - generic [ref=e69]:
+        - heading "If you can describe it, you can build it" [level=2] [ref=e71]
+        - paragraph [ref=e75]:
+          - text: The tools engineers use to build software are now capable of building software themselves. That changes what it means to be an engineer. At Anthropic, the majority of code is now written by
+          - link "Claude Code" [ref=e76] [cursor=pointer]:
+            - /url: https://claude.com/product/claude-code
+          - text: ". Engineers focus on architecture, product thinking, and continuous orchestration: managing multiple agents in parallel, giving direction, and making the decisions that shape what gets built."
+          - link "Claude Code" [ref=e77] [cursor=pointer]:
+            - /url: https://claude.com/product/claude-code
+          - text: extends that capability to anyone who can describe what they want to build.
+      - generic [ref=e82]:
+        - heading "Common use cases for Claude Code" [level=2] [ref=e84]
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - generic [ref=e87]: "01"
+            - heading "Navigating unfamiliar code" [level=3] [ref=e88]
+            - paragraph [ref=e90]: Deep knowledge of systems and architecture that was previously held by a few engineers becomes accessible to the whole team with Claude Code. It searches codebases, traces dependencies, and helps new members get up to speed on projects in minutes.
+          - generic [ref=e91]:
+            - generic [ref=e92]: "02"
+            - heading "Developing across the whole codebase" [level=3] [ref=e93]
+            - paragraph [ref=e95]: Claude Code searches directories to build context and understand how modules connect. It creates and edits files across a codebase, taking on ambitious work like building new features or executing multi-file refactors at a scale, saving days of work.
+          - generic [ref=e96]:
+            - generic [ref=e97]: "03"
+            - heading "Executing across your toolchain" [level=3] [ref=e98]
+            - paragraph [ref=e100]: Developers don't need to memorize commands for git, Kubernetes, or other CLI tools. They describe what they want and Claude Code uses tools like the GitHub CLI natively, running the right commands with the right syntax.
+          - generic [ref=e101]:
+            - generic [ref=e102]: "04"
+            - heading "Running tests and managing CI failures" [level=3] [ref=e103]
+            - paragraph [ref=e105]: When tests fail, Claude Code reads the errors, fixes the code, and runs the suite again until everything passes. It monitors CI pipelines on GitHub and GitLab and commits fixes automatically.
+      - generic [ref=e110]:
+        - heading "Democratizing who builds software" [level=2] [ref=e112]
+        - paragraph [ref=e116]: Claude Code makes development accessible to anyone with an idea. The ability to describe a goal in plain language and get working software back has opened development to people outside engineering. Founders, product managers, designers, and operations teams are building prototypes, internal tools, and personal projects without auditing code line by line.
+      - generic [ref=e121]:
+        - heading "How Claude Code impacts teams" [level=2] [ref=e123]
+        - generic [ref=e124]:
+          - paragraph [ref=e127]: From regulated industries to large-scale codebases, engineering organizations are already changing the way their engineering teams work.
+          - generic [ref=e128]:
+            - heading "Broad engineering adoption" [level=3] [ref=e129]
+            - paragraph [ref=e131]:
+              - strong [ref=e132]: Stripe
+              - text: deployed Claude Code across 1,370 engineers of all levels through a zero-configuration enterprise binary. One team completed a 10,000-line Scala-to-Java migration in four days, work estimated at ten engineer-weeks.
+          - generic [ref=e133]:
+            - heading "Faster incident response" [level=3] [ref=e134]
+            - paragraph [ref=e136]:
+              - strong [ref=e137]: Ramp
+              - text: integrated Claude Code into their development workflow and cut incident investigation time by 80%. Non-engineering teams across sales, risk, and finance now query their data warehouse using natural language instead of writing SQL.
+          - generic [ref=e138]:
+            - heading "Shorter project timelines" [level=3] [ref=e139]
+            - paragraph [ref=e141]:
+              - strong [ref=e142]: Wiz
+              - text: migrated a 50,000-line Python library to Go in roughly 20 hours of active development, a project the team estimated at two to three months of manual work.
+          - generic [ref=e143]:
+            - heading "Faster time to market" [level=3] [ref=e144]
+            - paragraph [ref=e146]:
+              - strong [ref=e147]: Rakuten
+              - text: reduced the average delivery time for new features from 24 working days to 5. Engineers now run multiple Claude Code sessions in parallel, delegating tasks across the codebase simultaneously.
+      - generic [ref=e152]:
+        - heading "Agent safety" [level=2] [ref=e154]
+        - generic [ref=e157]:
+          - paragraph [ref=e158]: "Developers control how much autonomy Claude Code has, from approving every action to letting built-in classifiers distinguish safe actions from risky ones automatically. The default is cautious: Claude Code asks before making changes to your files or running commands."
+          - paragraph [ref=e159]: Anthropic’s approach to agent safety, including how we design for trust, access boundaries, and human control, is documented in our research.
+          - paragraph [ref=e160]:
+            - link "Read our research on agent safety" [ref=e161] [cursor=pointer]:
+              - /url: https://www.anthropic.com/research
+      - generic [ref=e166]:
+        - heading "FAQ" [level=1] [ref=e168]
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - heading "How is Claude Code different from code completion tools?" [level=3] [ref=e172] [cursor=pointer]
+            - generic [ref=e176]:
+              - paragraph [ref=e177]: Code completion tools suggest the next line or function as a developer types. Claude Code operates at the project level. It reads the full codebase, plans an approach across multiple files, executes changes, runs tests, and iterates on failures. The developer defines the goal and reviews the result rather than guiding each step.
+              - paragraph [ref=e178]
+          - generic [ref=e179]:
+            - heading "Who should use Claude Code?" [level=3] [ref=e181] [cursor=pointer]
+            - paragraph [ref=e186]: Developers who want to hand off full tasks rather than autocomplete lines of code. But we've also seen product managers, founders, and operations teams start building working tools by describing outcomes in plain language.
+          - generic [ref=e187]:
+            - heading "What does \"agentic\" mean in this context?" [level=3] [ref=e189] [cursor=pointer]
+            - generic [ref=e193]:
+              - paragraph [ref=e194]: An agentic system acts toward a goal with a degree of autonomy, rather than responding to one prompt at a time. Claude Code reads a codebase, plans a sequence of actions, executes them using real development tools, evaluates the result, and adjusts its approach. The developer sets the objective and retains control over what gets committed, but the execution loop runs independently.
+              - paragraph [ref=e195]
+          - generic [ref=e196]:
+            - heading "How does Anthropic approach safety for an autonomous coding agent?" [level=3] [ref=e198] [cursor=pointer]
+            - paragraph [ref=e203]: Claude Code requires explicit permission before modifying files or running commands. It works within the developer's existing environment and uses their tools rather than operating in an opaque backend. Decisions about what code ships remain with the human. Anthropic's broader research on agent safety, including trust calibration, access boundaries, and oversight mechanisms, informs how Claude Code is designed.
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - paragraph [ref=e208]: Try Claude Code
+          - paragraph [ref=e209]: For installation, pricing, integrations, and technical documentation, visit the Claude Code product page.
+        - link "Get started" [ref=e210] [cursor=pointer]:
+          - /url: https://claude.com/product/claude-code
+          - generic [ref=e211]: Get started
+          - img [ref=e213]
+  - contentinfo "Site footer" [ref=e215]:
+    - generic [ref=e216]:
+      - link "Return to homepage" [ref=e218] [cursor=pointer]:
+        - /url: /
+        - img [ref=e219]
+      - navigation "Footer navigation" [ref=e221]:
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - heading "Products" [level=3] [ref=e224]
+            - list [ref=e225]:
+              - listitem [ref=e226]:
+                - link "Claude" [ref=e227] [cursor=pointer]:
+                  - /url: https://claude.com/product/overview
+              - listitem [ref=e228]:
+                - link "Claude Code" [ref=e229] [cursor=pointer]:
+                  - /url: https://claude.com/product/claude-code
+              - listitem [ref=e230]:
+                - link "Claude Code Enterprise" [ref=e231] [cursor=pointer]:
+                  - /url: https://claude.com/product/claude-code/enterprise
+              - listitem [ref=e232]:
+                - link "Claude Code Security" [ref=e233] [cursor=pointer]:
+                  - /url: https://claude.com/claude-code-security
+              - listitem [ref=e234]:
+                - link "Claude Cowork" [ref=e235] [cursor=pointer]:
+                  - /url: https://claude.com/product/cowork
+              - listitem [ref=e236]:
+                - link "Claude for Chrome" [ref=e237] [cursor=pointer]:
+                  - /url: https://claude.com/chrome
+              - listitem [ref=e238]:
+                - link "Claude for Slack" [ref=e239] [cursor=pointer]:
+                  - /url: https://claude.com/claude-for-slack
+              - listitem [ref=e240]:
+                - link "Claude for Excel" [ref=e241] [cursor=pointer]:
+                  - /url: https://claude.com/claude-for-excel
+              - listitem [ref=e242]:
+                - link "Claude for PowerPoint" [ref=e243] [cursor=pointer]:
+                  - /url: https://claude.com/claude-for-powerpoint
+              - listitem [ref=e244]:
+                - link "Claude for Word" [ref=e245] [cursor=pointer]:
+                  - /url: https://claude.com/claude-for-word
+              - listitem [ref=e246]:
+                - link "Skills" [ref=e247] [cursor=pointer]:
+                  - /url: https://www.claude.com/skills
+              - listitem [ref=e248]:
+                - link "Max plan" [ref=e249] [cursor=pointer]:
+                  - /url: https://claude.com/pricing/max
+              - listitem [ref=e250]:
+                - link "Team plan" [ref=e251] [cursor=pointer]:
+                  - /url: https://claude.com/pricing/team
+              - listitem [ref=e252]:
+                - link "Enterprise plan" [ref=e253] [cursor=pointer]:
+                  - /url: https://claude.com/pricing/enterprise
+              - listitem [ref=e254]:
+                - link "Download app" [ref=e255] [cursor=pointer]:
+                  - /url: https://claude.ai/download
+              - listitem [ref=e256]:
+                - link "Pricing" [ref=e257] [cursor=pointer]:
+                  - /url: https://claude.com/pricing
+              - listitem [ref=e258]:
+                - link "Log in to Claude" [ref=e259] [cursor=pointer]:
+                  - /url: https://claude.ai/
+          - generic [ref=e260]:
+            - heading "Models" [level=3] [ref=e261]
+            - list [ref=e262]:
+              - listitem [ref=e263]:
+                - link "Mythos preview" [ref=e264] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/glasswing
+              - listitem [ref=e265]:
+                - link "Opus" [ref=e266] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/claude/opus
+              - listitem [ref=e267]:
+                - link "Sonnet" [ref=e268] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/claude/sonnet
+              - listitem [ref=e269]:
+                - link "Haiku" [ref=e270] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/claude/haiku
+        - generic [ref=e271]:
+          - generic [ref=e272]:
+            - heading "Solutions" [level=3] [ref=e273]
+            - list [ref=e274]:
+              - listitem [ref=e275]:
+                - link "AI agents" [ref=e276] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/agents
+              - listitem [ref=e277]:
+                - link "Code modernization" [ref=e278] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/code-modernization
+              - listitem [ref=e279]:
+                - link "Coding" [ref=e280] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/coding
+              - listitem [ref=e281]:
+                - link "Customer support" [ref=e282] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/customer-support
+              - listitem [ref=e283]:
+                - link "Education" [ref=e284] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/education
+              - listitem [ref=e285]:
+                - link "Financial services" [ref=e286] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/financial-services
+              - listitem [ref=e287]:
+                - link "Government" [ref=e288] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/government
+              - listitem [ref=e289]:
+                - link "Healthcare" [ref=e290] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/healthcare
+              - listitem [ref=e291]:
+                - link "Life sciences" [ref=e292] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/life-sciences
+              - listitem [ref=e293]:
+                - link "Nonprofits" [ref=e294] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/nonprofits
+              - listitem [ref=e295]:
+                - link "Security" [ref=e296] [cursor=pointer]:
+                  - /url: https://claude.com/solutions/security
+          - generic [ref=e297]:
+            - heading "Claude Platform" [level=3] [ref=e298]
+            - list [ref=e299]:
+              - listitem [ref=e300]:
+                - link "Overview" [ref=e301] [cursor=pointer]:
+                  - /url: https://claude.com/platform/api
+              - listitem [ref=e302]:
+                - link "Developer docs" [ref=e303] [cursor=pointer]:
+                  - /url: https://platform.claude.com/docs
+              - listitem [ref=e304]:
+                - link "Pricing" [ref=e305] [cursor=pointer]:
+                  - /url: https://claude.com/pricing#api
+              - listitem [ref=e306]:
+                - link "Marketplace" [ref=e307] [cursor=pointer]:
+                  - /url: https://claude.com/platform/marketplace
+              - listitem [ref=e308]:
+                - link "Regional compliance" [ref=e309] [cursor=pointer]:
+                  - /url: https://claude.com/regional-compliance
+              - listitem [ref=e310]:
+                - link "Amazon Bedrock" [ref=e311] [cursor=pointer]:
+                  - /url: https://claude.com/partners/amazon-bedrock
+              - listitem [ref=e312]:
+                - link "Google Cloud’s Vertex AI" [ref=e313] [cursor=pointer]:
+                  - /url: https://claude.com/partners/google-cloud-vertex-ai
+              - listitem [ref=e314]:
+                - link "Microsoft Foundry" [ref=e315] [cursor=pointer]:
+                  - /url: https://claude.com/partners/microsoft-foundry
+              - listitem [ref=e316]:
+                - link "Console login" [ref=e317] [cursor=pointer]:
+                  - /url: https://platform.claude.com/
+        - generic [ref=e318]:
+          - generic [ref=e319]:
+            - heading "Resources" [level=3] [ref=e320]
+            - list [ref=e321]:
+              - listitem [ref=e322]:
+                - link "Blog" [ref=e323] [cursor=pointer]:
+                  - /url: https://claude.com/blog
+              - listitem [ref=e324]:
+                - link "Claude partner network" [ref=e325] [cursor=pointer]:
+                  - /url: https://claude.com/partners
+              - listitem [ref=e326]:
+                - link "Community" [ref=e327] [cursor=pointer]:
+                  - /url: https://claude.com/community
+              - listitem [ref=e328]:
+                - link "Connectors" [ref=e329] [cursor=pointer]:
+                  - /url: https://claude.com/connectors
+              - listitem [ref=e330]:
+                - link "Courses" [ref=e331] [cursor=pointer]:
+                  - /url: /learn
+              - listitem [ref=e332]:
+                - link "Customer stories" [ref=e333] [cursor=pointer]:
+                  - /url: https://claude.com/customers
+              - listitem [ref=e334]:
+                - link "Engineering at Anthropic" [ref=e335] [cursor=pointer]:
+                  - /url: /engineering
+              - listitem [ref=e336]:
+                - link "Events" [ref=e337] [cursor=pointer]:
+                  - /url: /events
+              - listitem [ref=e338]:
+                - link "Inside Claude Code" [ref=e339] [cursor=pointer]:
+                  - /url: /product/claude-code
+              - listitem [ref=e340]:
+                - link "Inside Claude Cowork" [ref=e341] [cursor=pointer]:
+                  - /url: /product/claude-cowork
+              - listitem [ref=e342]:
+                - link "Plugins" [ref=e343] [cursor=pointer]:
+                  - /url: https://claude.com/plugins
+              - listitem [ref=e344]:
+                - link "Powered by Claude" [ref=e345] [cursor=pointer]:
+                  - /url: https://claude.com/partners/powered-by-claude
+              - listitem [ref=e346]:
+                - link "Service partners" [ref=e347] [cursor=pointer]:
+                  - /url: https://claude.com/partners/services
+              - listitem [ref=e348]:
+                - link "Startups program" [ref=e349] [cursor=pointer]:
+                  - /url: https://claude.com/programs/startups
+              - listitem [ref=e350]:
+                - link "Tutorials" [ref=e351] [cursor=pointer]:
+                  - /url: https://claude.com/resources/tutorials
+              - listitem [ref=e352]:
+                - link "Use cases" [ref=e353] [cursor=pointer]:
+                  - /url: https://claude.com/resources/use-cases
+          - generic [ref=e354]:
+            - heading "Help and security" [level=3] [ref=e355]
+            - list [ref=e356]:
+              - listitem [ref=e357]:
+                - link "Availability" [ref=e358] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/supported-countries
+              - listitem [ref=e359]:
+                - link "Status" [ref=e360] [cursor=pointer]:
+                  - /url: https://status.anthropic.com/
+              - listitem [ref=e361]:
+                - link "Support center" [ref=e362] [cursor=pointer]:
+                  - /url: https://support.claude.com/en/
+        - generic [ref=e363]:
+          - generic [ref=e364]:
+            - heading "Company" [level=3] [ref=e365]
+            - list [ref=e366]:
+              - listitem [ref=e367]:
+                - link "Anthropic" [ref=e368] [cursor=pointer]:
+                  - /url: /company
+              - listitem [ref=e369]:
+                - link "Careers" [ref=e370] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e371]:
+                - link "Economic Futures" [ref=e372] [cursor=pointer]:
+                  - /url: /economic-index
+              - listitem [ref=e373]:
+                - link "Research" [ref=e374] [cursor=pointer]:
+                  - /url: /research
+              - listitem [ref=e375]:
+                - link "News" [ref=e376] [cursor=pointer]:
+                  - /url: /news
+              - listitem [ref=e377]:
+                - link "Claude’s Constitution" [ref=e378] [cursor=pointer]:
+                  - /url: /constitution
+              - listitem [ref=e379]:
+                - link "Responsible Scaling Policy" [ref=e380] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy
+              - listitem [ref=e381]:
+                - link "Security and compliance" [ref=e382] [cursor=pointer]:
+                  - /url: https://trust.anthropic.com/
+              - listitem [ref=e383]:
+                - link "Transparency" [ref=e384] [cursor=pointer]:
+                  - /url: /transparency
+          - generic [ref=e385]:
+            - heading "Terms and policies" [level=3] [ref=e386]
+            - list [ref=e387]:
+              - listitem [ref=e388]:
+                - link "Privacy policy" [ref=e389] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/legal/privacy
+              - listitem [ref=e390]:
+                - link "Consumer health data privacy policy" [ref=e391] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/legal/consumer-health-data-privacy-policy
+              - listitem [ref=e392]:
+                - link "Responsible disclosure policy" [ref=e393] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/responsible-disclosure-policy
+              - listitem [ref=e394]:
+                - 'link "Terms of service: Commercial" [ref=e395] [cursor=pointer]':
+                  - /url: https://www.anthropic.com/legal/commercial-terms
+              - listitem [ref=e396]:
+                - 'link "Terms of service: Consumer" [ref=e397] [cursor=pointer]':
+                  - /url: https://www.anthropic.com/legal/consumer-terms
+              - listitem [ref=e398]:
+                - link "Usage policy" [ref=e399] [cursor=pointer]:
+                  - /url: https://www.anthropic.com/legal/aup
+      - generic [ref=e400]:
+        - contentinfo [ref=e401]: © 2026 Anthropic PBC
+        - navigation "Social media links" [ref=e402]:
+          - listitem [ref=e403]:
+            - link "Visit our LinkedIn page" [ref=e404] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/anthropicresearch
+              - img [ref=e405]
+          - listitem [ref=e407]:
+            - link "Visit our X (formerly Twitter) profile" [ref=e408] [cursor=pointer]:
+              - /url: https://x.com/AnthropicAI
+              - img [ref=e409]
+          - listitem [ref=e411]:
+            - link "Visit our YouTube channel" [ref=e412] [cursor=pointer]:
+              - /url: https://www.youtube.com/@anthropic-ai
+              - img [ref=e413]
+  - alert [ref=e415]
