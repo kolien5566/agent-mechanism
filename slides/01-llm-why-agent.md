@@ -53,7 +53,7 @@ class: diagram-slide
 
 <div class="split-2">
   <div class="image-frame">
-    <img src="/products/chatgpt.webp" alt="Web chat example" />
+    <img src="/products/chatgpt.png" alt="Web chat example" />
   </div>
   <div class="frame">
     <div class="eyebrow">如果产品形态只是聊天窗口</div>
@@ -86,7 +86,7 @@ class: diagram-slide
     <h3>Chatbot</h3>
     <p>核心任务是回答问题。</p>
     <p class="tiny muted">重点是自然语言交互。</p>
-    <img src="/products/chatgpt-desktop-app.avif" alt="a" />
+    <img src="/products/chatgpt.png" alt="a" />
   </div>
   <div class="compare-card">
     <h3>Workflow</h3>
@@ -117,11 +117,63 @@ class: diagram-slide
 </div>
 
 ---
-class: diagram-slide
+class: title-compact page-tight mechanism-slide
 ---
 
-<div class="image-frame full-diagram">
-  <img src="/generated-images/react-agent-loop.png" alt="ReAct：Reason、Act、Observe 构成 Agent 工作闭环" />
+# Agent Loop：Agent 的最小工作模式
+
+<p class="lead tight">也可以把它理解成 ReAct 模式：不是一次性回答，而是在“思考、行动、观察”之间反复推进，直到任务完成。</p>
+
+<div class="mechanism-layout">
+  <div class="image-frame mechanism-diagram">
+    <img src="/generated-images/agent-loop.png" alt="Agent Loop：模型反复思考、调用工具、观察结果，并在完成后输出 Final Answer" />
+  </div>
+
+  <div class="frame mechanism-copy">
+    <div class="eyebrow">Agent Loop / ReAct</div>
+    <h3>从“回答问题”变成“推进任务”</h3>
+    <p>初始需求不在循环里，它只是把任务交给 Agent。真正的循环从“思考下一步”开始。</p>
+    <div class="limit-list">
+      <div><strong>思考下一步</strong>：根据当前状态决定要不要调用工具。</div>
+      <div><strong>执行并观察</strong>：工具返回结果后，Agent 把结果重新纳入上下文。</div>
+      <div><strong>判断是否完成</strong>：未完成就继续循环；完成后才输出 Final Answer。</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>关键点：</strong>
+  Agent 的“聪明”不只来自模型本身，还来自这个能持续行动、观察和修正的闭环。
+</div>
+
+---
+class: title-compact page-tight mechanism-slide
+---
+
+# Human-in-the-loop：把人放进 Agent Loop
+
+<p class="lead tight">当工具调用可能影响文件、账号、资金、权限或真实用户时，Agent 不应该直接执行，而是先让人审核。</p>
+
+<div class="mechanism-layout">
+  <div class="image-frame mechanism-diagram">
+    <img src="/generated-images/human-in-the-loop.png" alt="Human-in-the-loop：人类在高风险工具执行前审批、修改或拒绝" />
+  </div>
+
+  <div class="frame mechanism-copy">
+    <div class="eyebrow">Human-in-the-loop</div>
+    <h3>人类负责审核边界</h3>
+    <p>人工审核插在“准备调用工具”和“执行工具”之间，拦住真正会改变外部世界的动作。</p>
+    <div class="limit-list">
+      <div><strong>批准</strong>：动作继续执行，结果再回到观察与判断。</div>
+      <div><strong>修改</strong>：人调整动作边界，让 Agent 回到下一步规划。</div>
+      <div><strong>拒绝</strong>：危险动作不执行，Agent 重新思考替代方案。</div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>关键点：</strong>
+  Human-in-the-loop 不是降低自动化，而是在高风险步骤上加入可控的治理边界。
 </div>
 
 ---

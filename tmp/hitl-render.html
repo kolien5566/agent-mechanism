@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1672px; min-height: 941px; background: #f5f4ed; }
+    body { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #4d4c48; }
+    .canvas { width: 1672px; height: 941px; padding: 74px 84px; background: #f5f4ed; position: relative; overflow: hidden; }
+    .title { font-family: Georgia, "Times New Roman", "Songti SC", serif; font-size: 58px; line-height: 1.08; color: #141413; font-weight: 500; margin: 0; }
+    .subtitle { margin-top: 16px; font-size: 25px; line-height: 1.42; color: #5e5d59; max-width: 1160px; }
+    .rule { width: 118px; height: 7px; border-radius: 999px; background: #c96442; margin: 26px 0 38px; }
+    .card { background: #faf9f5; border: 2px solid #e8e6dc; border-radius: 28px; box-shadow: 0 14px 44px rgba(20,20,19,.07); }
+    .node { position: absolute; display: grid; place-items: center; text-align: center; padding: 18px 24px; background: #faf9f5; border: 2px solid #e8e6dc; border-radius: 26px; box-shadow: 0 12px 34px rgba(20,20,19,.06); min-height: 108px; }
+    .node strong { display: block; color: #141413; font-size: 28px; line-height: 1.16; margin-bottom: 8px; }
+    .node span { display: block; color: #5e5d59; font-size: 20px; line-height: 1.28; }
+    .accent { background: #f3e4dd; border-color: #ead1c7; }
+    .dark { background: #30302e; border-color: #30302e; color: #faf9f5; }
+    .dark strong, .dark span { color: #faf9f5; }
+    .final { background: #141413; border-color: #141413; }
+    .final strong { color: #faf9f5; }
+    .final span { color: #d9d6cf; }
+    .note { position: absolute; padding: 24px 28px; border-left: 8px solid #c96442; background: #efe9df; border-radius: 0 22px 22px 0; color: #4d4c48; font-size: 22px; line-height: 1.42; }
+    .note strong { color: #141413; }
+    svg.lines { position: absolute; left: 0; top: 0; width: 1672px; height: 941px; pointer-events: none; overflow: visible; }
+    .arrow { stroke: #c96442; stroke-width: 5; fill: none; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+    .arrow-muted { stroke: #87867f; stroke-width: 4; fill: none; marker-end: url(#arrowMuted); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 10 11; }
+    .label { position: absolute; font-size: 19px; font-weight: 700; color: #c96442; background: #f5f4ed; padding: 4px 10px; border-radius: 999px; }
+    
+  </style></head><body>
+<div class="canvas">
+  <h1 class="title">Human-in-the-loop：人进入 Agent loop 当审核员</h1>
+  <div class="subtitle">当动作有风险、会影响外部世界或需要业务判断时，Agent 不直接执行，而是暂停并请求人类批准、修改或拒绝。</div>
+  <div class="rule"></div>
+
+  <svg class="lines" viewBox="0 0 1672 941">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c96442"/></marker>
+      <marker id="arrowMuted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#87867f"/></marker>
+    </defs>
+    <path class="arrow" d="M 302 370 C 360 370, 390 370, 448 370"/>
+    <path class="arrow" d="M 698 370 C 756 370, 786 370, 844 370"/>
+    <path class="arrow" d="M 1094 370 C 1152 370, 1182 370, 1240 370"/>
+    <path class="arrow" d="M 966 496 C 966 556, 1018 590, 1088 590 L 1240 590"/>
+    <path class="arrow-muted" d="M 844 470 C 760 562, 642 606, 522 552 C 462 525, 438 482, 448 434"/>
+    <path class="arrow" d="M 1365 485 C 1365 558, 1290 642, 1180 642 L 1056 642"/>
+    <path class="arrow" d="M 806 642 L 676 642 C 590 642, 540 590, 540 486"/>
+  </svg>
+
+  <div class="node accent" style="left:84px; top:300px; width:260px;"><strong>Agent 计划动作</strong><span>准备调用工具<br/>或改变外部状态</span></div>
+  <div class="node" style="left:448px; top:300px; width:250px;"><strong>风险判断</strong><span>是否需要人类审批？</span></div>
+  <div class="node dark" style="left:844px; top:300px; width:250px;"><strong>Human review</strong><span>批准 / 修改 / 拒绝</span></div>
+  <div class="node" style="left:1240px; top:300px; width:250px;"><strong>执行工具</strong><span>发送、删除、下单<br/>改权限、跑命令</span></div>
+  <div class="node" style="left:806px; top:570px; width:250px;"><strong>Observation</strong><span>执行结果回到 agent</span></div>
+  <div class="node final" style="left:1240px; top:570px; width:250px;"><strong>Final answer</strong><span>向用户说明结果</span></div>
+
+  <div class="label" style="left:732px; top:326px;">高风险：暂停</div>
+  <div class="label" style="left:1118px; top:326px;">批准后执行</div>
+  <div class="label" style="left:640px; top:536px; color:#87867f;">拒绝/修改：回到计划</div>
+
+  <div class="note" style="left:84px; top:714px; width:720px;">
+    <strong>人不是替模型思考每一步，</strong>而是在关键动作前把关：这个动作能不能做、参数对不对、风险是否可接受。
+  </div>
+  <div class="note" style="left:886px; top:714px; width:600px; border-left-color:#30302e;">
+    常见审批点：发邮件、提交表单、删除文件、修改权限、付款、执行破坏性命令、访问敏感数据。
+  </div>
+</div>
+</body></html>
