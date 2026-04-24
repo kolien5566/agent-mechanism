@@ -5,8 +5,9 @@ class: section-dark
 <div class="center-stage">
   <div>
     <div class="section-mark">Part 3</div>
+    <div class="divider-line"></div>
     <h1 class="section-title">工程重点为什么会迁移</h1>
-    <p class="lead">这部分不是流行词科普，而是解释：为什么今天做 agent，光写 prompt 已经不够了。</p>
+    <p class="lead tight">这部分不是流行词科普，而是解释：为什么今天做 agent，光写 prompt 已经不够了。</p>
   </div>
 </div>
 
@@ -95,6 +96,8 @@ class: section-dark
   光有 prompt 和 context，还不足以让一整套执行系统稳定把事情做完。
 </div>
 
+---
+class: title-compact page-tight
 ---
 
 # Harness Engineering：开始关心“系统怎么跑完整件事”

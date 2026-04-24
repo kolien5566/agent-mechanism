@@ -14,18 +14,14 @@ drawings:
   <h1 class="hero-title">AI Agent 到底是什么，为什么它突然变得这么有用</h1>
   <p class="lead">
     这不是一份“热点词扫盲”。这节课要回答一个更实际的问题：
-    <strong>为什么今天的 Claude Code、Codex、Cursor 这些系统，已经不只是聊天机器人，而像会动手干活的软件程序？</strong>
+    <strong>为什么今天的 agent，已经不只是聊天机器人，而像会动手干活的软件程序？</strong>
   </p>
 
-  <div class="hero-visual-grid">
-    <div class="image-frame">
-      <img src="/products/codex.webp" alt="Codex GUI" />
-    </div>
-    <div class="image-collage">
-      <div class="image-frame"><img src="/products/claude-code.webp" alt="Claude Code" /></div>
-      <div class="image-frame"><img src="/products/cursor.webp" alt="Cursor" /></div>
-      <div class="image-frame"><img src="/products/openclaw-chatbot.png" alt="OpenClaw" /></div>
-      <div class="image-frame"><img src="/products/n8n.png" alt="n8n" /></div>
+  <div class="frame" style="margin-top: 1.2rem; max-width: 62rem;">
+    <div class="eyebrow">这节课真正要解决的误解</div>
+    <p class="mini-headline">Agent 不只是“更聪明的 LLM”，而是一套把模型、工具、状态和执行环境组织起来的软件系统。</p>
+    <div class="mini-note">
+      产品对比、能力边界、Codex 重点展示，会放到后面的独立章节里讲。
     </div>
   </div>
 </div>
@@ -91,15 +87,12 @@ drawings:
 ---
 src: ./slides/01-llm-why-agent.md
 ---
-
 ---
 src: ./slides/02-products-and-usage.md
 ---
-
 ---
 src: ./slides/03-capability-stack.md
 ---
-
 ---
 src: ./slides/04-engineering-evolution.md
 ---

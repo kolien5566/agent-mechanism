@@ -5,8 +5,9 @@ class: section-dark
 <div class="center-stage">
   <div>
     <div class="section-mark">Part 1</div>
+    <div class="divider-line"></div>
     <h1 class="section-title">先讲 LLM 为什么不够</h1>
-    <p class="lead">先把地基打稳：不理解 LLM 的机制与局限，就很难真正理解 agent 为什么会出现。</p>
+    <p class="lead tight">先把地基打稳：不理解 LLM 的机制与局限，就很难真正理解 agent 为什么会出现。</p>
   </div>
 </div>
 
@@ -274,5 +275,3 @@ class: section-dark
 <div class="takeaway">
   命令行执行能力让 LLM 从“文本生成器”变成“环境操作者”。
 </div>
-
----

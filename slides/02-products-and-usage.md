@@ -1,3 +1,18 @@
+---
+class: section-dark
+---
+
+<div class="center-stage">
+  <div>
+    <div class="section-mark">Part 2</div>
+    <div class="divider-line"></div>
+    <h1 class="section-title">市面上常见的 Agent 产品</h1>
+    <p class="lead tight">这一章单独讲产品形态、能力边界和上手方式，重点会放在 Codex 上，后面也方便直接插入演示视频。</p>
+  </div>
+</div>
+
+---
+
 # 市面上的 Agent 产品为什么长得完全不一样
 
 <div class="product-grid">
@@ -176,37 +191,41 @@
 </div>
 
 ---
+class: title-compact page-tight
+---
 
 # 明天就开始用 Claude Code / Codex：6 条最实用规则
 
-<div class="step-grid-2 compact-step">
-  <div class="step-list">
-  <div class="step-item">
+<div class="rule-mosaic">
+  <div class="rule-card">
+    <div class="rule-no">1</div>
     <h3>先给目标，不要先给实现细节</h3>
     <p>先说“我要什么结果”，再补“有哪些约束”。</p>
   </div>
-  <div class="step-item">
+  <div class="rule-card">
+    <div class="rule-no">2</div>
     <h3>把上下文喂够，但别喂垃圾</h3>
     <p>给目录、文件、报错、日志、接口说明，不要把无关内容一股脑倒进去。</p>
   </div>
-  <div class="step-item">
+  <div class="rule-card">
+    <div class="rule-no">3</div>
     <h3>让它先探索，再动手</h3>
     <p>尤其是陌生代码库，先让它读、搜、总结，再让它改。</p>
   </div>
-  </div>
-  <div class="step-list" style="counter-reset: step 3;">
-  <div class="step-item">
+  <div class="rule-card">
+    <div class="rule-no">4</div>
     <h3>把任务拆小</h3>
     <p>“补测试”“修 bug”“重构某模块”都比“帮我把系统全面优化一下”更容易成功。</p>
   </div>
-  <div class="step-item">
+  <div class="rule-card">
+    <div class="rule-no">5</div>
     <h3>要求验证</h3>
     <p>不要只让它改，要让它运行测试、解释结果、指出剩余风险。</p>
   </div>
-  <div class="step-item">
+  <div class="rule-card">
+    <div class="rule-no">6</div>
     <h3>你仍然是负责人</h3>
     <p>agent 可以做很多执行工作，但目标定义、最终验收、关键判断仍然在你手里。</p>
-  </div>
   </div>
 </div>
 
@@ -245,8 +264,11 @@
 </div>
 
 ---
+class: title-compact page-tight
+zoom: 0.94
+---
 
-# Claude Code、Codex、Cursor，怎么选
+# Claude Code、Codex、Cursor：怎么选
 
 <table>
   <thead>

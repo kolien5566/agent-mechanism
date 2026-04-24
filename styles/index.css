@@ -49,11 +49,13 @@ h4 {
 }
 
 h1 {
-  font-size: 2.08rem;
+  font-size: 1.98rem;
   line-height: 1.08;
   margin-bottom: 0.38rem;
   max-width: none;
-  text-wrap: balance;
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 h2 {
@@ -244,6 +246,11 @@ tr:last-child td {
   font-size: 1.08rem;
   line-height: 1.44;
   max-width: 54rem;
+}
+
+.lead.tight {
+  max-width: 46rem;
+  font-size: 1rem;
 }
 
 .muted {
@@ -656,9 +663,98 @@ tr:last-child td {
 
 .center-stage {
   display: grid;
-  align-content: center;
-  height: calc(100% - 1rem);
-  padding: 0 1.2rem;
+  align-content: start;
+  min-height: calc(100% - 1rem);
+  padding: 3.8rem 1.2rem 0;
+}
+
+.center-stage > div {
+  max-width: 54rem;
+}
+
+.title-compact h1 {
+  font-size: 1.72rem;
+  line-height: 1.12;
+}
+
+.title-compact .lead {
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+.page-tight .frame,
+.page-tight .panel,
+.page-tight .compare-card,
+.page-tight .term-card,
+.page-tight .mini-card,
+.page-tight .callout,
+.page-tight .takeaway,
+.page-tight .overlay-note {
+  padding-top: 0.66rem;
+  padding-bottom: 0.66rem;
+}
+
+.page-tight .wide-list li + li,
+.page-tight .check-item + .check-item {
+  margin-top: 0.18rem;
+}
+
+.mini-note {
+  margin-top: 0.78rem;
+  font-size: 0.82rem;
+  color: var(--claude-soft);
+}
+
+.rule-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.82rem;
+}
+
+.rule-card {
+  position: relative;
+  padding: 0.84rem 0.92rem 0.9rem 3.2rem;
+  background: var(--claude-ivory);
+  border: 1px solid var(--claude-border);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px var(--claude-shadow);
+}
+
+.rule-no {
+  position: absolute;
+  left: 0.82rem;
+  top: 0.82rem;
+  width: 1.82rem;
+  height: 1.82rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--claude-accent);
+  color: var(--claude-ivory);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.rule-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  font-size: 1.02rem;
+}
+
+.rule-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.38;
+}
+
+.tools-three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.82rem;
+}
+
+.tools-three .term-card {
+  min-height: 9.4rem;
 }
 
 .three-stage {
@@ -729,7 +825,9 @@ tr:last-child td {
   .step-grid-2,
   .hero-visual-grid,
   .tool-grid,
-  .timeline-row {
+  .timeline-row,
+  .rule-mosaic,
+  .tools-three {
     grid-template-columns: 1fr;
   }
 

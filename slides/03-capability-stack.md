@@ -5,14 +5,15 @@ class: section-dark
 <div class="center-stage">
   <div>
     <div class="section-mark">Part 2</div>
+    <div class="divider-line"></div>
     <h1 class="section-title">Agent 的能力扩展层</h1>
-    <p class="lead">这里不是“一堆插件介绍”，而是系统能力是怎么一层层加出来的。</p>
+    <p class="lead tight">这里不是“一堆插件介绍”，而是系统能力是怎么一层层加出来的。</p>
   </div>
 </div>
 
 ---
 
-# Agent capability stack：不是一堆插件，而是一套能力栈
+# Agent capability stack：能力不是一堆插件
 
 <div class="stack">
   <div class="stack-layer accent-panel">
@@ -38,10 +39,12 @@ class: section-dark
 </div>
 
 ---
+class: page-tight
+---
 
 # Tools：让 Agent 真正做事
 
-<div class="split-3">
+<div class="tools-three">
   <div class="term-card">
     <h3>信息类工具</h3>
     <p>读文件、搜网页、查数据库、调用 API。</p>
@@ -258,6 +261,8 @@ class: section-dark
 </div>
 
 ---
+class: title-compact page-tight
+---
 
 # 真实工作里，一个 Skill 长什么样
 
@@ -471,6 +476,8 @@ class: section-dark
   今天常见的 agent 看起来很强，往往不是因为模型突然无所不能，而是因为这些能力层终于被接到一起了。
 </div>
 
+---
+class: title-compact page-tight
 ---
 
 # 只能优先补 4 层能力时，先补什么
