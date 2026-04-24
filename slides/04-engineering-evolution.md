@@ -97,77 +97,19 @@ class: section-dark
 </div>
 
 ---
-class: title-compact page-tight
+class: diagram-slide
 ---
 
-# Harness Engineering：开始关心“系统怎么跑完整件事”
-
-<div class="card-grid">
-  <div class="compare-card">
-    <h3>执行环境</h3>
-    <p>系统在哪儿运行，能访问哪些工具和文件。</p>
-  </div>
-  <div class="compare-card">
-    <h3>任务衔接</h3>
-    <p>多轮任务怎么接续，中断后怎么继续。</p>
-  </div>
-  <div class="compare-card">
-    <h3>结果检查</h3>
-    <p>怎么验证刚才那一步到底做对了没有。</p>
-  </div>
-  <div class="compare-card">
-    <h3>人工确认</h3>
-    <p>关键操作要不要让人看一眼再继续。</p>
-  </div>
-  <div class="compare-card">
-    <h3>运行记录</h3>
-    <p>系统每一步做了什么，事后能不能回看。</p>
-  </div>
-  <div class="compare-card accent-panel">
-    <h3>系统闭环</h3>
-    <p>让 agent 真正从“回答器”变成“执行系统”。</p>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>这一页要记住：</strong>
-  <code>Harness Engineering</code> 之所以出现，是因为 agent 已经不再只是聊天程序，而是执行系统。
-</div>
-
-<div class="source-line">
-  资料：OpenAI《Harness engineering: leveraging Codex in an agent-first world》；Anthropic《Harness design for long-running application development》。
+<div class="image-frame full-diagram">
+  <img src="/generated-images/harness-system-loop.png" alt="Harness Engineering 系统闭环信息图" />
 </div>
 
 ---
+class: diagram-slide
+---
 
-# 为什么工程重心会从 Prompt 移到 Context，再移到 Harness
-
-<div class="three-stage">
-  <div class="stage-card">
-    <div class="eyebrow">阶段 1</div>
-    <h3>Prompt Engineering</h3>
-    <p>核心问题：怎么把任务说清楚。</p>
-  </div>
-  <div class="stage-card">
-    <div class="eyebrow">阶段 2</div>
-    <h3>Context Engineering</h3>
-    <p>核心问题：每一步该给模型看什么。</p>
-  </div>
-  <div class="stage-card">
-    <div class="eyebrow">阶段 3</div>
-    <h3>Harness Engineering</h3>
-    <p>核心问题：怎么让整套系统把任务做完。</p>
-  </div>
-</div>
-
-<div class="stage-bridge">
-  <div class="bridge-note">任务复杂度上升：从单轮问答走向多轮、多工具、多步骤任务。</div>
-  <div class="bridge-note">真实执行出现：开始接环境、跑命令、接反馈、做验证。</div>
-</div>
-
-<div class="takeaway">
-  <strong>教学重点：</strong>
-  这不是流行词替换，而是系统复杂度升级后，控制点一步步往外移。
+<div class="image-frame full-diagram">
+  <img src="/generated-images/prompt-context-harness.png" alt="Prompt Context Harness 三阶段演进信息图" />
 </div>
 
 ---

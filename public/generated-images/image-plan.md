@@ -15,10 +15,18 @@
 | 文件 | 主题 | 状态 | 嵌入位置 |
 |---|---|---|---|
 | `llm-next-token.png` | LLM 的 next-token prediction 机制 | 已复制入库并嵌入 | `slides/01-llm-why-agent.md` |
-| `react-agent-loop.png` | ReAct / agent loop | 待生成 | `slides/01-llm-why-agent.md` |
-| `mcp-primitives.png` | MCP 的 Tools / Resources / Prompts | 待生成 | `slides/03-capability-stack.md` |
-| `skill-pack.png` | Skill 是“经验 + 资料 + 脚本 + 规范”的组合包 | 待生成 | `slides/03-capability-stack.md` |
-| `prompt-context-harness.png` | Prompt -> Context -> Harness 的工程演进 | 待生成 | `slides/04-engineering-evolution.md` |
+| `from-chat-to-agent.png` | 从 chatbot 到 agent 的能力升级 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
+| `llm-inside-agent-system.png` | Agent 不是模型本身，而是软件系统 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
+| `react-agent-loop.png` | ReAct / agent loop | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
+| `shell-access-boundary.png` | Shell access 扩展 agent 能力边界 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
+| `agent-product-core.png` | 不同产品外壳背后的 Agent Core | 已生成并嵌入 | `slides/02-products-and-usage.md` |
+| `codex-task-to-result.png` | Codex 从任务到可验收结果的工作流 | 已生成并嵌入 | `slides/02-products-and-usage.md` |
+| `agent-capability-stack.png` | Agent capability stack 总览 | 已生成并嵌入 | `slides/03-capability-stack.md` |
+| `mcp-primitives.png` | MCP 的 Tools / Resources / Prompts | 已生成并嵌入 | `slides/03-capability-stack.md` |
+| `skill-pack.png` | Skill 是“经验 + 资料 + 脚本 + 规范”的组合包 | 已生成并嵌入 | `slides/03-capability-stack.md` |
+| `subagents-task-split.png` | 复杂任务如何拆给多个 Subagents | 已生成并嵌入 | `slides/03-capability-stack.md` |
+| `harness-system-loop.png` | Harness Engineering 的系统闭环 | 已生成并嵌入 | `slides/04-engineering-evolution.md` |
+| `prompt-context-harness.png` | Prompt -> Context -> Harness 的工程演进 | 已生成并嵌入 | `slides/04-engineering-evolution.md` |
 
 已用来源：
 

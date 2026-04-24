@@ -59,25 +59,8 @@ class: section-dark
 
 ---
 
-# 不同产品背后，其实是同一个 Agent 内核
-
-<div class="stack">
-  <div class="stack-layer accent-panel">
-    <div class="layer-title">UI / Surface（交互外壳）</div>
-    <div>CLI、桌面、IDE、Web、workflow canvas</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Runtime / Harness（运行时 / 执行框架）</div>
-    <div>系统怎么真正跑起来，怎么接任务、怎么继续执行、怎么接住反馈。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Model（模型）</div>
-    <div>负责理解输入、生成输出、做局部判断。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Tools + State / Memory</div>
-    <div>工具负责做事，状态和记忆负责把任务跨步骤延续下去。</div>
-  </div>
+<div class="image-frame full-diagram">
+  <img src="/generated-images/agent-product-core.png" alt="不同产品外壳汇入同一个 Agent Core" />
 </div>
 
 <div class="takeaway">
@@ -194,32 +177,12 @@ class: section-dark
 class: title-compact page-tight
 ---
 
-# Codex 演示：从一个任务，到一个可验收的结果
-
-<div class="video-demo-grid">
-  <div class="video-slot">
-    <div class="eyebrow">Demo video</div>
-    <div class="video-title">Codex 工作台演示视频位置</div>
-    <div class="tiny">建议展示：接任务、读上下文、拆分工作、运行验证、汇总结论。</div>
-  </div>
-  <div class="demo-points">
-    <div class="flow-card accent-panel">
-      <div class="eyebrow">1. 任务合同</div>
-      <p>先给目标、范围、约束和验收标准，而不是只丢一句“帮我做”。</p>
-    </div>
-    <div class="flow-card">
-      <div class="eyebrow">2. 工作台能力</div>
-      <p>重点看它怎么组织上下文、任务状态、并行工作和后台推进。</p>
-    </div>
-    <div class="flow-card">
-      <div class="eyebrow">3. 结果验收</div>
-      <p>最后不要只看“说了什么”，要看它是否解释改动、运行验证、交代风险。</p>
-    </div>
-  </div>
+<div class="image-frame full-diagram">
+  <img src="/generated-images/codex-task-to-result.png" alt="Codex 从任务到可验收结果的工作流" />
 </div>
 
 <div class="takeaway">
-  这页后续可以直接替换为真实视频；课堂讲解重点是让同事看到 agent 如何把“回答”变成“推进任务”。
+  课堂讲解重点是让同事看到 agent 如何把“回答”变成“可检查、可复现、可交付的工作流”。
 </div>
 
 ---

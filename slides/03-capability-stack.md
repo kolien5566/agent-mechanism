@@ -12,30 +12,11 @@ class: section-dark
 </div>
 
 ---
+class: diagram-slide
+---
 
-# Agent capability stack：能力不是一堆插件
-
-<div class="stack">
-  <div class="stack-layer accent-panel">
-    <div class="layer-title">Agent</div>
-    <div>面向用户目标，负责整体任务推进。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Skills / Memory / Subagents</div>
-    <div>让能力可复用、状态可延续、任务可分工。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Retrieval / RAG / MCP</div>
-    <div>让 agent 能看见资料，也能把外部系统规范地接进来。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Tools</div>
-    <div>让 agent 真正做事，而不只是说事。</div>
-  </div>
-  <div class="stack-layer">
-    <div class="layer-title">Runtime / Harness</div>
-    <div>让整套系统跑起来，并在多步任务中保持闭环。</div>
-  </div>
+<div class="image-frame full-diagram">
+  <img src="/generated-images/agent-capability-stack.png" alt="Agent capability stack：能力不是一堆插件" />
 </div>
 
 ---
@@ -103,39 +84,11 @@ class: page-tight
 </div>
 
 ---
+class: diagram-slide
+---
 
-# MCP 里最重要的 3 个原语
-
-<table>
-  <thead>
-    <tr>
-      <th>原语</th>
-      <th>作用</th>
-      <th>一句话理解</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>Tools</code></td>
-      <td>让 agent 执行动作</td>
-      <td>让它做</td>
-    </tr>
-    <tr>
-      <td><code>Resources</code></td>
-      <td>让 agent 读取信息</td>
-      <td>让它看</td>
-    </tr>
-    <tr>
-      <td><code>Prompts</code></td>
-      <td>提供可复用提示模板</td>
-      <td>让它按某种方式想</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="takeaway">
-  <strong>课堂讲法：</strong>
-  学 MCP，不是为了背缩写，而是为了理解：agent 接外部世界时，最基本就这三类接口。
+<div class="image-frame full-diagram">
+  <img src="/generated-images/mcp-primitives.png" alt="MCP 里最重要的 3 个原语" />
 </div>
 
 ---
@@ -252,32 +205,11 @@ class: title-compact page-tight
 
 ---
 
-# Skill 是什么
-
-<div class="split-2">
-  <div class="frame accent-panel">
-    <div class="eyebrow">从 Claude Code / LangChain 角度看</div>
-    <p>
-      <code>Skill</code> 不是一句提示词，也不是一个 API。
-      它更像一份打包好的“做事方法”。
-    </p>
-  </div>
-  <div class="frame">
-    <div class="eyebrow">一个 skill 里通常有什么</div>
-    <ul class="wide-list">
-      <li><code>SKILL.md</code>：说明怎么做</li>
-      <li>scripts：配套脚本</li>
-      <li>docs / assets：参考资料与模板</li>
-      <li>有时还会带工具约束和调用方式</li>
-    </ul>
-    <div class="overlay-note">
-      所以 skill 的本质，不是单点功能，而是“经验 + 资料 + 脚本 + 规范”的组合包。
-    </div>
-  </div>
+<div class="image-frame full-diagram">
+  <img src="/generated-images/skill-pack.png" alt="Skill Pack 包含触发条件、步骤说明、示例、输出标准、注意事项、脚本和资料" />
 </div>
 
 <div class="takeaway">
-  <strong>这一页要记住：</strong>
   Tool 是“给 agent 一只手”，Skill 是“教 agent 一套手法”。
 </div>
 
@@ -510,31 +442,11 @@ class: title-compact page-tight
 </div>
 
 ---
+class: diagram-slide
+---
 
-# 一个复杂任务，怎么拆给多个 Subagents
-
-<div class="split-3">
-  <div class="term-card">
-    <h3>主 agent</h3>
-    <p>负责理解总目标：例如“修复登录问题并补上测试”。</p>
-  </div>
-  <div class="term-card accent-panel">
-    <h3>子 agent A</h3>
-    <p>专门查认证流程、日志和代码路径，找出真正报错点。</p>
-  </div>
-  <div class="term-card">
-    <h3>子 agent B</h3>
-    <p>专门补测试、跑测试、汇总验证结果。</p>
-  </div>
-</div>
-
-<div class="overlay-note">
-  这样拆的好处，不是“显得高级”，而是让调研和验证分别在更干净的上下文里进行，最后只把结果交回主 agent。
-</div>
-
-<div class="takeaway">
-  <strong>课堂判断：</strong>
-  任务一旦同时包含“调研、实现、验证”三种不同工作，往往就值得考虑 subagents。
+<div class="image-frame full-diagram">
+  <img src="/generated-images/subagents-task-split.png" alt="主 agent 将复杂任务拆给调研、实现修复和验证子 agent，并保持上下文隔离" />
 </div>
 
 ---
