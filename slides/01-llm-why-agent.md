@@ -125,14 +125,58 @@ class: diagram-slide
 </div>
 
 ---
+class: title-compact page-tight
+---
 
 # 为什么 Agent 比最早的 chatbot 强很多
 
-<div class="tool-grid">
-  <div class="tool-tile"><strong>Runtime</strong>让系统持续运行，而不是只回答一次。</div>
-  <div class="tool-tile"><strong>Tool Use</strong>让模型能接触外部能力，而不是困在文本里。</div>
-  <div class="tool-tile"><strong>State / Memory</strong>让任务可以跨步骤推进，而不是每轮都重新开始。</div>
-  <div class="tool-tile"><strong>Observe</strong>让下一步建立在真实反馈上，而不是只靠猜。</div>
+<div class="agent-upgrade">
+  <div class="upgrade-baseline">
+    <div class="eyebrow">早期 chatbot 的边界</div>
+    <h3>一次对话，一次回答</h3>
+    <p>模型只看到用户发来的文本，然后生成下一段文本。它可以建议你怎么做，但任务真正发生在哪里、做到哪一步、结果是否成功，通常都不在系统控制里。</p>
+    <div class="limit-list">
+      <div>纯聊天窗口，缺乏普通软件的运行环境</div>
+      <div>没有远程或本地工具可供调用</div>
+      <div>不知道你处理任务进展状态</div>
+    </div>
+  </div>
+
+  <div class="upgrade-stack">
+    <div class="upgrade-row">
+      <div class="upgrade-index">01</div>
+      <div>
+        <strong>Runtime（运行时 / 执行环境）</strong>
+        <p>这是 agent 程序真正跑起来的环境：启动会话、加载模型与工具配置、管理一次运行中的上下文 / 日志，并执行已授权的工具调用。</p>
+      </div>
+    </div>
+    <div class="upgrade-row">
+      <div class="upgrade-index">02</div>
+      <div>
+        <strong>Tool Use（工具调用）</strong>
+        <p>模型不只输出建议，而是提出要求执行特定动作(function call, mcp)；agent(身体)收到llm（大脑）的要求，去调用互联网搜索、文件读写、浏览器控制、数据库连接、Shell 等工具。Shell 是最强大执行工具(调用操作系统命令)，但是Shell不等于 Runtime。</p>
+      </div>
+    </div>
+    <div class="upgrade-row">
+      <div class="upgrade-index">04</div>
+      <div>
+        <strong>Observe / Feedback Loop</strong>
+        <p>每次执行都会产生反馈：命令输出、页面状态、测试结果、报错信息。下一步行动依据建立在以上证据上，而不只是猜测。</p>
+      </div>
+    </div>
+    <div class="upgrade-row">
+      <div class="upgrade-index">03</div>
+      <div>
+        <strong>State / Memory</strong>
+        <p>任务计划、中间产物、已尝试方案、环境约束会被保留下来，所以多轮推进不是每次从零开始。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>关键区别：</strong>
+  Chatbot 停在“生成答案”；Agent 把 LLM 放进一个有运行环境、有工具调用、有状态记录、有反馈的任务闭环里。
 </div>
 
 ---

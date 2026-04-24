@@ -11,3 +11,5 @@
 [  745132ms] [ERROR] slide failed to load TypeError: Failed to fetch dynamically imported module: http://localhost:3030/@slidev/slides/4/md @ http://localhost:3030/@slidev/slides:29
 [  848199ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864
 [  944051ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864
+[ 1655498ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864
+[ 1700538ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864

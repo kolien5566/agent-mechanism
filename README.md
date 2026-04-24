@@ -11,7 +11,7 @@
 1. 先讲 `LLM` 的基本机制和限制。
 2. 再解释为什么仅靠 chatbot 不够，为什么需要 agent。
 3. 强调 agent 不是模型本身，而是承载模型的软件系统。
-4. 讲清楚 agent 为什么比早期 chatbot 强很多：关键是 `Runtime（运行时）`、`Tool Use（工具调用）`、`Shell Access（命令行执行）`、状态管理和反馈闭环。
+4. 讲清楚 agent 为什么比早期 chatbot 强很多：关键是 `Runtime（运行时 / 执行环境）`、`Tool Use（工具调用）`、状态管理和反馈闭环；`Shell Access（命令行执行）` 是一种很强的执行类工具，不要讲成 Runtime 本身。
 5. 单独开一章介绍市面上常见的 agent 产品，重点会逐渐转向 `Codex`，后续计划在这里插入视频展示 Codex 能力。
 6. 讲 agent 的能力扩展层：Tools、RAG、MCP、Skills、Memory、Subagents。
 7. 最后讲 `Prompt Engineering -> Context Engineering -> Harness Engineering` 的演进原因。
@@ -22,6 +22,7 @@
 - 观点句用中文即可，不要中英重复同一句废话。
 - 专业术语可以保留英文，但第一次出现要补中文解释。
 - 不要自造概念，尽量用业界已有术语，例如 `ReAct`、`Runtime`、`Harness`、`MCP`、`Skill`。
+- 注意术语边界：`Runtime` 是软件运行时 / 执行环境概念；`Harness` 是围绕 agent 的任务约束、上下文组织、工具配置、验证和协作设计。两者相关，但不能混成同义词。
 - 内容要像教案，不要像提纲。要让同事真的能理解并上手。
 
 ## 当前文件结构

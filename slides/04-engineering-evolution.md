@@ -142,8 +142,8 @@ class: diagram-slide
     </tr>
     <tr>
       <td>Harness 阶段</td>
-      <td>长任务、执行环境、验证、协作</td>
-      <td>能不能把整件事稳定做完</td>
+      <td>任务分解、上下文交接、权限边界、验证与协作</td>
+      <td>能不能约束 agent 稳定完成整件事</td>
     </tr>
   </tbody>
 </table>
@@ -209,7 +209,7 @@ class: diagram-slide
 
 # 参考资料
 
-- [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
+- [Anthropic: Building effective agents](https://www.anthropic.com/research/building-effective-agents)
 - [Anthropic: Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - [Anthropic: Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps)
 - [Anthropic Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code/overview)
