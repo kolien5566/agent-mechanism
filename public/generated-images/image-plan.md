@@ -1,5 +1,29 @@
 # 课程配图规划
 
+这个目录只放正式嵌入 Slidev 的课程图片。生成工具的临时输出不要直接在 slides 里引用。
+
+## 使用规则
+
+- 图片正式路径：`public/generated-images/`
+- Slidev 引用路径：`/generated-images/<filename>.png`
+- 图片中文字优先使用中文。
+- 旧 SVG 不再使用。
+- 图要服务讲解机制、流程、结构，不做纯装饰。
+
+## 当前状态
+
+| 文件 | 主题 | 状态 | 嵌入位置 |
+|---|---|---|---|
+| `llm-next-token.png` | LLM 的 next-token prediction 机制 | 已复制入库并嵌入 | `slides/01-llm-why-agent.md` |
+| `react-agent-loop.png` | ReAct / agent loop | 待生成 | `slides/01-llm-why-agent.md` |
+| `mcp-primitives.png` | MCP 的 Tools / Resources / Prompts | 待生成 | `slides/03-capability-stack.md` |
+| `skill-pack.png` | Skill 是“经验 + 资料 + 脚本 + 规范”的组合包 | 待生成 | `slides/03-capability-stack.md` |
+| `prompt-context-harness.png` | Prompt -> Context -> Harness 的工程演进 | 待生成 | `slides/04-engineering-evolution.md` |
+
+已用来源：
+
+- `llm-next-token.png` 来自 `/Users/kay/.codex/generated_images/019db7e0-cbcb-7f90-9ccb-67c1bb1106c6/ig_0f195a8ff4eb12650169e9d1a949ac8191a28360990e75b693.png`
+
 下面这 5 张图是这套 Slidev 课程里最值得优先补的讲解图。它们覆盖了从 LLM 基本机制、Agent 闭环、MCP 接能力、Skill 复用能力，到 Prompt/Context/Harness 演进的主线。
 
 ## 1. `LLM 的基本机制：next-token prediction【配图】`

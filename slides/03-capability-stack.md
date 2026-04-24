@@ -4,7 +4,7 @@ class: section-dark
 
 <div class="center-stage">
   <div>
-    <div class="section-mark">Part 2</div>
+    <div class="section-mark">Part 3</div>
     <div class="divider-line"></div>
     <h1 class="section-title">Agent 的能力扩展层</h1>
     <p class="lead tight">这里不是“一堆插件介绍”，而是系统能力是怎么一层层加出来的。</p>
@@ -139,6 +139,72 @@ class: page-tight
 </div>
 
 ---
+class: title-compact page-tight
+---
+
+# MCP 解决的不是“有没有工具”，而是“怎么接得标准”
+
+<div class="split-2">
+  <div class="frame">
+    <div class="eyebrow">没有统一协议时</div>
+    <ul class="wide-list">
+      <li>每个 agent 产品都要单独适配每个外部系统</li>
+      <li>工具、资料、提示模板散落在不同接入代码里</li>
+      <li>换一个产品，很多集成要重新写一遍</li>
+      <li>团队很难复用同一套接入方式</li>
+    </ul>
+  </div>
+  <div class="frame accent-panel">
+    <div class="eyebrow">有 MCP 之后</div>
+    <ul class="wide-list">
+      <li>外部系统按同一套协议暴露能力</li>
+      <li>agent client 按统一方式发现并调用能力</li>
+      <li>资料、动作、提示模板有了清楚的分类</li>
+      <li>同一个 server 可以服务多个 agent 产品</li>
+    </ul>
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>教学重点：</strong>
+  MCP 的价值不是多一个“插件市场”，而是把 agent 和外部系统之间的接线方式标准化。
+</div>
+
+---
+class: title-compact page-tight
+---
+
+# MCP client、server、外部系统怎么配合
+
+<div class="connector-flow">
+  <div class="flow-card accent-panel">
+    <div class="eyebrow">Agent / Client</div>
+    <h3>提出需求</h3>
+    <p>例如：帮我查这个设计组件的属性，或者创建一个 GitHub issue。</p>
+  </div>
+  <div class="flow-line">→</div>
+  <div class="flow-card">
+    <div class="eyebrow">MCP Server</div>
+    <h3>翻译成标准接口</h3>
+    <p>把外部系统能看的资料、能做的动作、可复用的 prompt 暴露出来。</p>
+  </div>
+  <div class="flow-line">→</div>
+  <div class="flow-card">
+    <div class="eyebrow">External System</div>
+    <h3>真正完成操作</h3>
+    <p>例如 Figma、Notion、数据库、GitHub、浏览器或内部业务系统。</p>
+  </div>
+</div>
+
+<div class="overlay-note">
+  可以把 MCP server 理解成“agent 和外部系统之间的适配层”：它不替代外部系统，也不替代 agent，而是让两边按稳定协议对话。
+</div>
+
+<div class="takeaway">
+  对非技术同事来说，理解到这里就够了：MCP 让 agent 接系统时更像“插标准接口”，而不是每次临时拉电线。
+</div>
+
+---
 
 # 一个 MCP server 在真实工作里长什么样
 
@@ -217,6 +283,37 @@ class: page-tight
 
 <div class="source-line">
   资料：Anthropic《Equipping agents for the real world with Agent Skills》；LangChain Deep Agents Skills 文档。
+</div>
+
+---
+class: title-compact page-tight
+---
+
+# Skill 被调用时，agent 实际上多了一套工作流程
+
+<div class="connector-flow">
+  <div class="flow-card">
+    <div class="eyebrow">1. 识别任务类型</div>
+    <h3>这像哪类工作</h3>
+    <p>例如做表格、改 PPT、审前端页面、处理 PDF。</p>
+  </div>
+  <div class="flow-line">→</div>
+  <div class="flow-card accent-panel">
+    <div class="eyebrow">2. 读取 Skill</div>
+    <h3>按既定方法做</h3>
+    <p>查看 <code>SKILL.md</code>、参考资料、模板和工具约束。</p>
+  </div>
+  <div class="flow-line">→</div>
+  <div class="flow-card">
+    <div class="eyebrow">3. 执行并验证</div>
+    <h3>交付可检查结果</h3>
+    <p>调用脚本、生成文件、截图检查、运行测试或给出风险说明。</p>
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>一句话：</strong>
+  prompt 是“这次你怎么答”，skill 是“以后遇到这类任务，你都按这套流程做”。
 </div>
 
 ---

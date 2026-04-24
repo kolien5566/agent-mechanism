@@ -194,6 +194,38 @@ class: section-dark
 class: title-compact page-tight
 ---
 
+# Codex 演示：从一个任务，到一个可验收的结果
+
+<div class="video-demo-grid">
+  <div class="video-slot">
+    <div class="eyebrow">Demo video</div>
+    <div class="video-title">Codex 工作台演示视频位置</div>
+    <div class="tiny">建议展示：接任务、读上下文、拆分工作、运行验证、汇总结论。</div>
+  </div>
+  <div class="demo-points">
+    <div class="flow-card accent-panel">
+      <div class="eyebrow">1. 任务合同</div>
+      <p>先给目标、范围、约束和验收标准，而不是只丢一句“帮我做”。</p>
+    </div>
+    <div class="flow-card">
+      <div class="eyebrow">2. 工作台能力</div>
+      <p>重点看它怎么组织上下文、任务状态、并行工作和后台推进。</p>
+    </div>
+    <div class="flow-card">
+      <div class="eyebrow">3. 结果验收</div>
+      <p>最后不要只看“说了什么”，要看它是否解释改动、运行验证、交代风险。</p>
+    </div>
+  </div>
+</div>
+
+<div class="takeaway">
+  这页后续可以直接替换为真实视频；课堂讲解重点是让同事看到 agent 如何把“回答”变成“推进任务”。
+</div>
+
+---
+class: title-compact page-tight
+---
+
 # 明天就开始用 Claude Code / Codex：6 条最实用规则
 
 <div class="rule-mosaic">

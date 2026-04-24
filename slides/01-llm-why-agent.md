@@ -12,41 +12,11 @@ class: section-dark
 </div>
 
 ---
+class: diagram-slide
+---
 
-# LLM 的基本机制：next-token prediction
-
-<div class="frame">
-  <div class="eyebrow">一句话版</div>
-  <p class="mini-headline">根据前文，预测下一个最可能出现的 token。</p>
-  <p>
-    然后把这个 token 接到后面，再继续预测下一个。
-    这个过程不断重复，于是得到一整段回答、代码或解释。
-  </p>
-</div>
-
-<div class="process-row">
-  <div class="panel">
-    <div class="eyebrow">Step 1</div>
-    <h3>读取前文</h3>
-    <p>模型先看到当前上下文，例如：我 / 今天 / 想 / 讲 / AI / Agent</p>
-  </div>
-  <div class="process-arrow">→</div>
-  <div class="panel accent-panel">
-    <div class="eyebrow">Step 2</div>
-    <h3>预测下一个 token</h3>
-    <p>它会给出候选，然后选出当前最可能继续往下接的 token。</p>
-  </div>
-  <div class="process-arrow">→</div>
-  <div class="panel">
-    <div class="eyebrow">Step 3</div>
-    <h3>不断重复</h3>
-    <p>于是得到完整回答、代码、摘要或解释。</p>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>关键词：</strong>
-  <code>next-token prediction</code> 是大语言模型最基础的生成机制。
+<div class="image-frame full-diagram">
+  <img src="/generated-images/llm-next-token.png" alt="LLM 的 next-token prediction 机制图" />
 </div>
 
 <div class="source-line">
