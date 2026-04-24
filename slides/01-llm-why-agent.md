@@ -146,22 +146,15 @@ class: title-compact page-tight
     <div class="upgrade-row">
       <div class="upgrade-index">01</div>
       <div>
-        <strong>Runtime（运行时 / 执行环境）</strong>
-        <p>这是 agent 程序真正跑起来的环境：启动会话、加载模型与工具配置、管理一次运行中的上下文 / 日志，并执行已授权的工具调用。</p>
+        <strong>Runtime（运行环境）</strong>
+        <p>Agent 作为软件，需要运行在一个能接触外部环境的 runtime 里。这个运行环境决定它能否读写文件、联网、启动进程、或者访问远程服务。</p>
       </div>
     </div>
     <div class="upgrade-row">
       <div class="upgrade-index">02</div>
       <div>
         <strong>Tool Use（工具调用）</strong>
-        <p>模型不只输出建议，而是提出要求执行特定动作(function call, mcp)；agent(身体)收到llm（大脑）的要求，去调用互联网搜索、文件读写、浏览器控制、数据库连接、Shell 等工具。Shell 是最强大执行工具(调用操作系统命令)，但是Shell不等于 Runtime。</p>
-      </div>
-    </div>
-    <div class="upgrade-row">
-      <div class="upgrade-index">04</div>
-      <div>
-        <strong>Observe / Feedback Loop</strong>
-        <p>每次执行都会产生反馈：命令输出、页面状态、测试结果、报错信息。下一步行动依据建立在以上证据上，而不只是猜测。</p>
+        <p>模型不只输出建议，而是提出要求执行特定动作(function call)；agent(身体)收到llm（大脑）的要求，去调用互联网搜索、文件读写、数据库连接、Shell 等工具。Shell 是最强大执行工具(调用操作系统命令)，但是Shell不等于 Runtime。</p>
       </div>
     </div>
     <div class="upgrade-row">
@@ -171,12 +164,53 @@ class: title-compact page-tight
         <p>任务计划、中间产物、已尝试方案、环境约束会被保留下来，所以多轮推进不是每次从零开始。</p>
       </div>
     </div>
+    <div class="upgrade-row">
+      <div class="upgrade-index">04</div>
+      <div>
+        <strong>Observe / Feedback Loop</strong>
+        <p>每次执行都会产生反馈：命令输出、页面状态、测试结果、报错信息。下一步行动依据建立在以上证据上，而不只是猜测。</p>
+      </div>
+    </div>    
   </div>
 </div>
 
 <div class="takeaway">
   <strong>关键区别：</strong>
   Chatbot 停在“生成答案”；Agent 把 LLM 放进一个有运行环境、有工具调用、有状态记录、有反馈的任务闭环里。
+</div>
+
+
+---
+class: title-compact page-tight
+---
+
+# Agent哪怕只有shell调用+前端GUI也足够强大
+
+<div class="openclaw-showcase">
+  <div class="frame accent-panel openclaw-copy">
+    <div class="eyebrow">为什么这已经很强</div>
+    <p>
+      这意味着用户可以通过自然语言，间接控制操作系统已经提供的大量基础能力：
+      文件、进程、网络请求、脚本。
+    </p>
+    <div class="limit-list">
+      <div><strong>Shell</strong> 提供操作系统命令执行入口</div>
+      <div><strong>前端 GUI</strong> 把能力包装成普通用户能用的产品</div>
+      <div><strong>Agent</strong> 在中间负责理解目标、触发动作、观察结果</div>
+    </div>
+    <div class="takeaway">
+      最近爆火的 OpenClaw就是一个直观例子，哪怕不额外挂载任何插件，软件初始就让人觉得足够好用。当然OpenClaw还有其能力拓展的方案，比如skill hub社区生态。
+    </div>
+  </div>
+
+  <div class="openclaw-images">
+    <div class="image-frame openclaw-shot">
+      <img src="/products/openclaw-chatbot.png" alt="OpenClaw chatbot interface" />
+    </div>
+    <div class="image-frame openclaw-shot">
+      <img src="/products/openclaw-web.avif" alt="OpenClaw web interface" />
+    </div>
+  </div>
 </div>
 
 ---

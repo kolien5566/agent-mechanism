@@ -36,7 +36,7 @@ drawings:
   <div class="compare-card accent-panel">
     <div class="eyebrow">agent</div>
     <h3>“直接开始做”</h3>
-    <p>它会读代码、跑命令、改文件、看结果、继续下一步。</p>
+    <p>它会读文件、跑命令、改文件、看结果、继续下一步。</p>
   </div>
   <div class="compare-card">
     <div class="eyebrow">workflow 系统</div>
