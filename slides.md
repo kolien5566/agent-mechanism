@@ -11,18 +11,15 @@ drawings:
 <div style="max-width: 78rem; margin: 0 auto;">
   <div class="eyebrow">AI Agent Course Notes</div>
   <div class="divider-line"></div>
-  <h1 class="hero-title">AI Agent 到底是什么，为什么它突然变得这么有用</h1>
+  <h1 class="hero-title">AI Agent 到底是什么，为什么它变得这么有用</h1>
   <p class="lead">
-    这不是一份“热点词扫盲”。这节课要回答一个更实际的问题：
-    <strong>为什么今天的 agent，已经不只是聊天机器人，而像会动手干活的软件程序？</strong>
+    这不是一份“热点词扫盲”，而是要回答一个更实际的问题：
+    为什么今天的 agent，已经不只是聊天机器人，而像会自主干活的员工？
   </p>
 
   <div class="frame" style="margin-top: 1.2rem; max-width: 62rem;">
-    <div class="eyebrow">这节课真正要解决的误解</div>
+    <div class="eyebrow">这节课要建立的理解：</div>
     <p class="mini-headline">Agent 不只是“更聪明的 LLM”，而是一套把模型、工具、状态和执行环境组织起来的软件系统。</p>
-    <div class="mini-note">
-      产品对比、能力边界、Codex 重点展示，会放到后面的独立章节里讲。
-    </div>
   </div>
 </div>
 
@@ -49,8 +46,8 @@ drawings:
 </div>
 
 <div class="overlay-note">
-  <strong>这节课的目标：</strong>
-  不是背定义，而是让你能解释清楚：为什么 agent 比最早的 chatbot 强这么多，以及它的能力边界究竟来自哪里。
+  <strong>目标：</strong>
+  解释清楚为什么 agent 比最早的 chatbot 强这么多，以及它的能力边界究竟来自哪里。
 </div>
 
 ---
@@ -80,9 +77,6 @@ drawings:
   </div>
 </div>
 
-<div class="takeaway">
-  今天这节课不是“先背概念，再看定义”，而是沿着“为什么会出现 -> 它补了什么 -> 怎么真正用起来”这条线往前讲。
-</div>
 
 ---
 src: ./slides/01-llm-why-agent.md

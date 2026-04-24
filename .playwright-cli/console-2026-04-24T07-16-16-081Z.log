@@ -1,0 +1,13 @@
+[  496964ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3030/slides/01-llm-why-agent.md__slidev_12.md?import&t=1777015472970:0
+[  496964ms] [ERROR] [vite] Failed to reload /slides/01-llm-why-agent.md__slidev_12.md. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:3030/@vite/client:808
+[  539493ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3030/slides/01-llm-why-agent.md__slidev_12.md?import&t=1777015472970:0
+[  539493ms] [ERROR] slide failed to load TypeError: Failed to fetch dynamically imported module: http://localhost:3030/@slidev/slides/12/md?t=1777015472970 @ http://localhost:3030/@slidev/slides?t=1777015472970:69
+[  539495ms] [ERROR] slide failed to load TypeError: Failed to fetch dynamically imported module: http://localhost:3030/@slidev/slides/12/md?t=1777015472970 @ http://localhost:3030/@slidev/slides?t=1777015472970:69
+[  687397ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3030/slides/01-llm-why-agent.md__slidev_4.md?import&t=1777015663457:0
+[  687398ms] [ERROR] [vite] Failed to reload /slides/01-llm-why-agent.md__slidev_4.md. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:3030/@vite/client:808
+[  727437ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864
+[  745130ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3030/slides/01-llm-why-agent.md__slidev_4.md?import:0
+[  745130ms] [ERROR] slide failed to load TypeError: Failed to fetch dynamically imported module: http://localhost:3030/@slidev/slides/4/md @ http://localhost:3030/@slidev/slides:29
+[  745132ms] [ERROR] slide failed to load TypeError: Failed to fetch dynamically imported module: http://localhost:3030/@slidev/slides/4/md @ http://localhost:3030/@slidev/slides:29
+[  848199ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864
+[  944051ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:3030/@vite/client:864

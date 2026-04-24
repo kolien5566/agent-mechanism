@@ -14,9 +14,9 @@
 
 | 文件 | 主题 | 状态 | 嵌入位置 |
 |---|---|---|---|
-| `llm-next-token.png` | LLM 的 next-token prediction 机制 | 已复制入库并嵌入 | `slides/01-llm-why-agent.md` |
+| `llm-next-token.png` | LLM 的 next-token prediction 机制 | 已重新生成，提升说明清晰度，并嵌入 | `slides/01-llm-why-agent.md` |
 | `from-chat-to-agent.png` | 从 chatbot 到 agent 的能力升级 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
-| `llm-inside-agent-system.png` | Agent 不是模型本身，而是软件系统 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
+| `llm-inside-agent-system.png` | Agent 不是模型本身，而是软件系统 | 已重新生成，移除上下文模块和底部结论条，并嵌入 | `slides/01-llm-why-agent.md` |
 | `react-agent-loop.png` | ReAct / agent loop | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
 | `shell-access-boundary.png` | Shell access 扩展 agent 能力边界 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
 | `agent-product-core.png` | 不同产品外壳背后的 Agent Core | 已生成并嵌入 | `slides/02-products-and-usage.md` |
@@ -30,7 +30,8 @@
 
 已用来源：
 
-- `llm-next-token.png` 来自 `/Users/kay/.codex/generated_images/019db7e0-cbcb-7f90-9ccb-67c1bb1106c6/ig_0f195a8ff4eb12650169e9d1a949ac8191a28360990e75b693.png`
+- `llm-next-token.png` 来自 `/Users/kay/.codex/generated_images/019dbe4b-70bb-7630-b7e1-040f4c60f8c8/ig_06f955ccb18578230169eb156c4e7081919476514139065e05.png`，已重新生成以提升 next-token prediction 说明清晰度。
+- `llm-inside-agent-system.png` 来自 `/Users/kay/.codex/generated_images/019dbd1c-2059-7f52-ae23-47cc0f9dd183/ig_09712cfa49d03ca30169eb19aa05a08191945b52e5f9959dc2.png`，已重新生成，移除上下文模块和底部结论条，保留并列组件协作关系。
 
 下面这 5 张图是这套 Slidev 课程里最值得优先补的讲解图。它们覆盖了从 LLM 基本机制、Agent 闭环、MCP 接能力、Skill 复用能力，到 Prompt/Context/Harness 演进的主线。
 

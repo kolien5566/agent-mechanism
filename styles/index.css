@@ -14,9 +14,11 @@
   --claude-shadow: rgba(20, 20, 19, 0.06);
   --claude-shadow-deep: rgba(20, 20, 19, 0.12);
   --claude-serif: Georgia, "Times New Roman", serif;
-  --claude-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --claude-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  --claude-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
+  --claude-mono:
+    ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
 }
 
 html,
@@ -934,12 +936,12 @@ tr:last-child td {
   .tag-row,
   .step-grid-2,
   .hero-visual-grid,
-    .tool-grid,
-    .timeline-row,
-    .rule-mosaic,
-    .tools-three,
-    .connector-flow,
-    .video-demo-grid {
+  .tool-grid,
+  .timeline-row,
+  .rule-mosaic,
+  .tools-three,
+  .connector-flow,
+  .video-demo-grid {
     grid-template-columns: 1fr;
   }
 

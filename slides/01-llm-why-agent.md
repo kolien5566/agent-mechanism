@@ -7,8 +7,8 @@ class: section-dark
     <div class="section-mark">Part 1</div>
     <div class="divider-line"></div>
     <h1 class="section-title">先讲 LLM 为什么不够</h1>
-    <p class="lead tight">先把地基打稳：不理解 LLM 的机制与局限，就很难真正理解 agent 为什么会出现。</p>
-  </div>
+    <p class="lead tight">先把地基打稳：不理解 LLM 的机制与局限，就很难理解 agent 为什么会出现。</p>
+    </div>
 </div>
 
 ---
@@ -29,14 +29,12 @@ class: diagram-slide
     <div class="checklist">
       <div class="check-item"><div class="check-mark">✓</div><div>理解语言模式与上下文关系</div></div>
       <div class="check-item"><div class="check-mark">✓</div><div>生成结构化文本和代码</div></div>
-      <div class="check-item"><div class="check-mark">✓</div><div>模仿格式、风格、例子</div></div>
       <div class="check-item"><div class="check-mark">✓</div><div>做局部推理、归纳和重写</div></div>
     </div>
   </div>
   <div class="frame accent-panel">
     <div class="eyebrow">但这不等于什么</div>
     <div class="checklist">
-      <div class="check-item"><div class="check-mark">!</div><div>不等于它天然会执行任务</div></div>
       <div class="check-item"><div class="check-mark">!</div><div>不等于它天然会操作外部世界</div></div>
       <div class="check-item"><div class="check-mark">!</div><div>不等于它天然能维护长期状态</div></div>
       <div class="check-item"><div class="check-mark">!</div><div>不等于它天然能把一件事从头做到尾</div></div>
@@ -51,14 +49,14 @@ class: diagram-slide
 
 ---
 
-# 最早的 chatbot，天花板到底在哪里
+# 最早的 chatbot，天花板在哪里
 
 <div class="split-2">
   <div class="image-frame">
-    <img src="/products/openclaw-chatbot.png" alt="Web chat example" />
+    <img src="/products/chatgpt.webp" alt="Web chat example" />
   </div>
   <div class="frame">
-    <div class="eyebrow">如果系统形态只是聊天窗口</div>
+    <div class="eyebrow">如果产品形态只是聊天窗口</div>
     <ul class="wide-list">
       <li>它可以回答你，但不会自己继续下一步</li>
       <li>它可以建议你怎么做，但不会替你真正执行</li>
@@ -81,25 +79,29 @@ class: diagram-slide
 
 ---
 
-# Agent 到底是什么，不是什么
+# Agent 是什么，不是什么
 
 <div class="definition-grid">
   <div class="compare-card">
     <h3>Chatbot</h3>
     <p>核心任务是回答问题。</p>
     <p class="tiny muted">重点是自然语言交互。</p>
+    <img src="/products/chatgpt-desktop-app.avif" alt="a" />
   </div>
   <div class="compare-card">
     <h3>Workflow</h3>
     <p>核心任务是按预先写好的流程走。</p>
     <p class="tiny muted">重点是流程可控、路径固定。</p>
+    <img src="/products/n8n.png" alt="b" />
   </div>
   <div class="compare-card accent-panel">
     <h3>Agent</h3>
     <p>核心任务是围绕目标持续判断、调用工具、推进多步任务。</p>
     <p class="tiny muted">重点是动态决策与任务闭环。</p>
+    <img src="/products/claude-code.webp" alt="c" />
   </div>
 </div>
+
 
 <div class="takeaway">
   <strong>一句话：</strong>
@@ -131,19 +133,6 @@ class: diagram-slide
   <div class="tool-tile"><strong>Tool Use</strong>让模型能接触外部能力，而不是困在文本里。</div>
   <div class="tool-tile"><strong>State / Memory</strong>让任务可以跨步骤推进，而不是每轮都重新开始。</div>
   <div class="tool-tile"><strong>Observe</strong>让下一步建立在真实反馈上，而不是只靠猜。</div>
-</div>
-
-<div class="split-2" style="margin-top:1rem;">
-  <div class="image-frame">
-    <img src="/products/claude-code.webp" alt="Claude Code screenshot" />
-  </div>
-  <div class="frame accent-panel">
-    <h3>看图理解</h3>
-    <p>当系统已经能读代码、跑命令、看输出、继续下一步时，它就不只是聊天窗口了，而是在真实环境里工作。</p>
-    <div class="takeaway">
-      chatbot 更像回答器，agent 更像任务执行系统。
-    </div>
-  </div>
 </div>
 
 ---
