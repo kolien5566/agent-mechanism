@@ -58,13 +58,11 @@ class: section-dark
 </div>
 
 ---
+class: diagram-slide
+---
 
 <div class="image-frame full-diagram">
   <img src="/generated-images/agent-product-core.png" alt="不同产品外壳汇入同一个 Agent Core" />
-</div>
-
-<div class="takeaway">
-  很多 Agent 产品的真正差异，其实在外壳和接入方式，而不在核心运行机制。
 </div>
 
 ---
@@ -174,15 +172,11 @@ class: section-dark
 </div>
 
 ---
-class: title-compact page-tight
+class: diagram-slide
 ---
 
 <div class="image-frame full-diagram">
   <img src="/generated-images/codex-task-to-result.png" alt="Codex 从任务到可验收结果的工作流" />
-</div>
-
-<div class="takeaway">
-  课堂讲解重点是让同事看到 agent 如何把“回答”变成“可检查、可复现、可交付的工作流”。
 </div>
 
 ---

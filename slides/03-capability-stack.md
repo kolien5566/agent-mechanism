@@ -204,17 +204,11 @@ class: title-compact page-tight
 </div>
 
 ---
+class: diagram-slide
+---
 
 <div class="image-frame full-diagram">
   <img src="/generated-images/skill-pack.png" alt="Skill Pack 包含触发条件、步骤说明、示例、输出标准、注意事项、脚本和资料" />
-</div>
-
-<div class="takeaway">
-  Tool 是“给 agent 一只手”，Skill 是“教 agent 一套手法”。
-</div>
-
-<div class="source-line">
-  资料：Anthropic《Equipping agents for the real world with Agent Skills》；LangChain Deep Agents Skills 文档。
 </div>
 
 ---

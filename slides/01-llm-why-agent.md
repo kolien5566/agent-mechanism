@@ -19,10 +19,6 @@ class: diagram-slide
   <img src="/generated-images/llm-next-token.png" alt="LLM 的 next-token prediction 机制图" />
 </div>
 
-<div class="source-line">
-  资料：OpenAI 官方模型与推理文档；Anthropic 关于 agent 与 context engineering 的官方文章。
-</div>
-
 ---
 
 # 这种“词语接龙”机制，为什么已经很强
