@@ -78,34 +78,73 @@ class: diagram-slide
 </div>
 
 ---
+class: title-compact page-tight
+---
 
-# Agent 是什么，不是什么
+# Agent 是什么
+
+<p class="lead tight">
+Agent 是一种 AI 应用软件：LLM 参与控制运行过程，而不只是生成一段回答。
+</p>
 
 <div class="definition-grid">
   <div class="compare-card">
-    <h3>Chatbot</h3>
-    <p>核心任务是回答问题。</p>
-    <p class="tiny muted">重点是自然语言交互。</p>
-    <img src="/products/chatgpt.png" alt="a" />
+    <h3>先理解软件</h3>
+    <p>软件不是屏幕上的界面，而是一组会被计算机执行的程序、数据和规则。</p>
+    <p class="tiny muted">运行起来以后，它会接收输入、读写状态、调用系统能力或外部 API，并产生输出。</p>
   </div>
   <div class="compare-card">
-    <h3>Workflow</h3>
-    <p>核心任务是按预先写好的流程走。</p>
-    <p class="tiny muted">重点是流程可控、路径固定。</p>
-    <img src="/products/n8n.png" alt="b" />
+    <h3>LLM 不是全部</h3>
+    <p>LLM 负责根据上下文判断“下一步应该做什么”。</p>
+    <p class="tiny muted">但读文件、联网、调 Shell、保存任务进度、控制权限，都要由外层软件来完成。</p>
   </div>
   <div class="compare-card accent-panel">
-    <h3>Agent</h3>
-    <p>核心任务是围绕目标持续判断、调用工具、推进多步任务。</p>
-    <p class="tiny muted">重点是动态决策与任务闭环。</p>
-    <img src="/products/claude-code.webp" alt="c" />
+    <h3>Agent 的本质</h3>
+    <p>把 LLM 的判断接到真实的软件能力上，让它参与任务的执行流程。</p>
+    <p class="tiny muted">所以 Agent 至少要有上下文、工具接口、状态记录、权限边界和结束条件。</p>
   </div>
 </div>
 
 
 <div class="takeaway">
   <strong>一句话：</strong>
-  Chatbot 负责回答，Workflow 负责按图执行，Agent 负责在不确定环境里推进任务。
+  Agent 的关键不是“更会聊天”，而是把 LLM 放进一个真实运行的软件系统里，让模型参与决定这个软件接下来要调用什么能力、观察什么结果、什么时候结束任务。
+</div>
+
+---
+class: title-compact page-tight
+---
+
+# Agent 不是什么
+
+<p class="lead tight">
+Chatbot、Workflow 和 Agent 都可以接入模型，但它们控制任务的方式不同。
+</p>
+
+<div class="definition-grid">
+  <div class="compare-card">
+    <h3>Chatbot</h3>
+    <p>核心是对话界面，把用户输入转成一段回答。</p>
+    <p class="tiny muted">通常停在“请求 → 回复”，不负责持续维护任务状态。</p>
+    <img src="/products/chatgpt.png" alt="ChatGPT 对话产品截图" />
+  </div>
+  <div class="compare-card">
+    <h3>Workflow</h3>
+    <p>核心是预先写好的流程编排，按固定节点和分支执行。</p>
+    <p class="tiny muted">路径主要由人提前设计，遇到没写进流程的情况不会自己改策略。</p>
+    <img src="/products/n8n.png" alt="n8n workflow 产品截图" />
+  </div>
+  <div class="compare-card accent-panel">
+    <h3>Agent</h3>
+    <p>核心是在运行中判断下一步，调用工具，观察结果，再继续推进。</p>
+    <p class="tiny muted">路径不是完全写死的，而是由模型在软件约束下动态选择。</p>
+    <img src="/products/claude-code.webp" alt="Claude Code agent 产品截图" />
+  </div>
+</div>
+
+<div class="takeaway">
+  <strong>区别：</strong>
+  Chatbot 主要负责回答，Workflow 主要负责按图执行，Agent 主要负责在不确定环境里持续决策和行动。
 </div>
 
 ---
@@ -122,7 +161,7 @@ class: title-compact page-tight mechanism-slide
 
 # Agent Loop：Agent 的最小工作模式
 
-<p class="lead tight">也可以把它理解成 ReAct 模式：不是一次性回答，而是在“思考、行动、观察”之间反复推进，直到任务完成。</p>
+<p class="lead tight">也被称为 ReAct 模式：不是一次性回答，而是在“思考、行动、观察”之间反复推进，直到任务完成。</p>
 
 <div class="mechanism-layout">
   <div class="image-frame mechanism-diagram">
@@ -132,7 +171,7 @@ class: title-compact page-tight mechanism-slide
   <div class="frame mechanism-copy">
     <div class="eyebrow">Agent Loop / ReAct</div>
     <h3>从“回答问题”变成“推进任务”</h3>
-    <p>初始需求不在循环里，它只是把任务交给 Agent。真正的循环从“思考下一步”开始。</p>
+    <p>初始需求把任务交给 Agent。真正的循环从“思考下一步”开始。</p>
     <div class="limit-list">
       <div><strong>思考下一步</strong>：根据当前状态决定要不要调用工具。</div>
       <div><strong>执行并观察</strong>：工具返回结果后，Agent 把结果重新纳入上下文。</div>
@@ -188,7 +227,7 @@ class: title-compact page-tight
     <h3>一次对话，一次回答</h3>
     <p>模型只看到用户发来的文本，然后生成下一段文本。它可以建议你怎么做，但任务真正发生在哪里、做到哪一步、结果是否成功，通常都不在系统控制里。</p>
     <div class="limit-list">
-      <div>纯聊天窗口，缺乏普通软件的运行环境</div>
+      <div>纯聊天窗口，缺乏软件的运行环境</div>
       <div>没有远程或本地工具可供调用</div>
       <div>不知道你处理任务进展状态</div>
     </div>
