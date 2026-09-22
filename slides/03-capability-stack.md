@@ -4,511 +4,541 @@ class: section-dark
 
 <div class="center-stage">
   <div>
-    <div class="section-mark">Part 3</div>
+    <div class="section-mark">03 · 能力扩展</div>
     <div class="divider-line"></div>
-    <h1 class="section-title">Agent 的能力扩展层</h1>
-    <p class="lead tight">这里不是“一堆插件介绍”，而是系统能力是怎么一层层加出来的。</p>
+    <h1 class="section-title">Agent 的能力扩展</h1>
+    <p class="lead">上下文、工具、记忆与知识库，让 Agent 能处理不同类型的工作。</p>
   </div>
 </div>
 
+<!--
+这一部分解释基本原理，不要求听众配置或开发这些能力。各产品提供的功能不同，不是每个 Agent 都具备下面的全部能力。
+参考：《AI Agent Book》第 1—4 章。
+-->
+
 ---
-class: diagram-slide
+class: figure-slide
 ---
 
-<div class="image-frame full-diagram">
-  <img src="/generated-images/agent-capability-stack.png" alt="Agent capability stack：能力不是一堆插件" />
+# Agent 的能力可以按任务组合
+
+<div class="diagram-figure">
+  <img src="/generated-images/agent-capability-stack.png" alt="模型结合上下文、工具、记忆和可选扩展完成任务" />
 </div>
 
----
-class: page-tight
----
-
-# Tools：让 Agent 真正做事
-
-<div class="tools-three">
-  <div class="term-card">
-    <h3>信息类工具</h3>
-    <p>读文件、搜网页、查数据库、调用 API。</p>
-  </div>
-  <div class="term-card">
-    <h3>执行类工具</h3>
-    <p>跑脚本、发请求、点网页、执行命令。</p>
-  </div>
-  <div class="term-card">
-    <h3>环境类工具</h3>
-    <p>终端、浏览器、IDE、沙箱、远程环境。</p>
-  </div>
-</div>
-
-<div class="callout centered-note">
-  <p><strong>教学重点：</strong>没有工具，Agent 往往只能说；有了工具，它才能做。</p>
-</div>
-
-<div class="source-line">
-  资料：Anthropic Claude Code 官方总览；LangChain Agents / Tools 官方文档。
-</div>
+<!--
+本图是能力地图，不是每个 Agent 都必须逐层安装的结构。模型、上下文和工具构成基本工作方式；MCP、Skills、长期记忆和子 Agent 由产品和任务需要决定。
+-->
 
 ---
 
-# MCP 是什么
-
-<div class="split-2">
-  <div class="frame accent-panel">
-    <div class="eyebrow">标准定义</div>
-    <p>
-      <code>MCP</code> 是 <code>Model Context Protocol</code>，一种把外部工具、资源和提示词标准化接给模型或 agent 的协议。
-    </p>
-    <div class="takeaway">
-      它更像“统一插座标准”，不是某个具体功能。
-    </div>
-  </div>
-  <div class="frame">
-    <div class="eyebrow">它解决的问题</div>
-    <p>
-      如果每个 AI 应用都要分别对接 GitHub、数据库、Figma、Notion、浏览器，集成成本会越来越高。
-      <code>MCP</code> 的作用就是把这种接入方式标准化。
-    </p>
-    <div class="overlay-note">
-      没有 MCP 时，每个产品都要自己重新造一套接外部系统的方式；有了 MCP，至少能在同一套协议上接工具、资料和模板。
-    </div>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>这一页要记住：</strong>
-  MCP 不是 agent 本身，也不是某个单一工具；它更像一套“标准接线方式”。
-</div>
-
-<div class="source-line">
-  资料：MCP 官方 Architecture 文档；Anthropic Claude Code 的 MCP 文档。
-</div>
-
----
-class: diagram-slide
----
-
-<div class="image-frame full-diagram">
-  <img src="/generated-images/mcp-primitives.png" alt="MCP 里最重要的 3 个原语" />
-</div>
-
----
-class: title-compact page-tight
----
-
-# MCP 解决的不是“有没有工具”，而是“怎么接得标准”
+# 上下文：模型这一轮能看到什么
 
 <div class="split-2">
   <div class="frame">
-    <div class="eyebrow">没有统一协议时</div>
-    <ul class="wide-list">
-      <li>每个 agent 产品都要单独适配每个外部系统</li>
-      <li>工具、资料、提示模板散落在不同接入代码里</li>
-      <li>换一个产品，很多集成要重新写一遍</li>
-      <li>团队很难复用同一套接入方式</li>
-    </ul>
+    <h3>任务与约束</h3>
+    <p>本次目标、输出格式、范围，以及已经确认的要求。例如把会议记录整理成一页摘要。</p>
+    <h3>参考资料</h3>
+    <p>本轮读取的文档、图片、表格和检索片段，为回答提供具体依据。</p>
   </div>
   <div class="frame accent-panel">
-    <div class="eyebrow">有 MCP 之后</div>
-    <ul class="wide-list">
-      <li>外部系统按同一套协议暴露能力</li>
-      <li>agent client 按统一方式发现并调用能力</li>
-      <li>资料、动作、提示模板有了清楚的分类</li>
-      <li>同一个 server 可以服务多个 agent 产品</li>
-    </ul>
+    <h3>历史与进展</h3>
+    <p>之前的沟通、已完成的步骤、当前结论，以及仍待确认的问题。</p>
+    <h3>工具信息</h3>
+    <p>当前可调用的能力，以及工具刚刚返回的内容、结果或错误。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>教学重点：</strong>
-  MCP 的价值不是多一个“插件市场”，而是把 agent 和外部系统之间的接线方式标准化。
-</div>
+<p class="note">文件保存在电脑里，只有被读取并传入模型后，才会成为当前上下文。</p>
 
----
-class: title-compact page-tight
----
-
-# MCP client、server、外部系统怎么配合
-
-<div class="connector-flow">
-  <div class="flow-card accent-panel">
-    <div class="eyebrow">Agent / Client</div>
-    <h3>提出需求</h3>
-    <p>例如：帮我查这个设计组件的属性，或者创建一个 GitHub issue。</p>
-  </div>
-  <div class="flow-line">→</div>
-  <div class="flow-card">
-    <div class="eyebrow">MCP Server</div>
-    <h3>翻译成标准接口</h3>
-    <p>把外部系统能看的资料、能做的动作、可复用的 prompt 暴露出来。</p>
-  </div>
-  <div class="flow-line">→</div>
-  <div class="flow-card">
-    <div class="eyebrow">External System</div>
-    <h3>真正完成操作</h3>
-    <p>例如 Figma、Notion、数据库、GitHub、浏览器或内部业务系统。</p>
-  </div>
-</div>
-
-<div class="overlay-note">
-  可以把 MCP server 理解成“agent 和外部系统之间的适配层”：它不替代外部系统，也不替代 agent，而是让两边按稳定协议对话。
-</div>
-
-<div class="takeaway">
-  对非技术同事来说，理解到这里就够了：MCP 让 agent 接系统时更像“插标准接口”，而不是每次临时拉电线。
-</div>
+<!--
+参考：《AI Agent Book》第 2 章“上下文：决定 Agent 能力上限的关键”“从 API 视角看上下文的构成”。
+https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+这里用工作材料解释上下文，不展开 API 消息角色。上下文还可能包括产品提供的系统规则与持久信息。
+-->
 
 ---
 
-# 一个 MCP server 在真实工作里长什么样
+# 上下文会更新，也有容量限制
+
+<div class="split-3">
+  <div class="frame">
+    <h3>按需读取</h3>
+    <p>先找相关资料，再读取需要的部分。整份文件都传入时，也可能包含大量无关内容。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>保留任务摘要</h3>
+    <p>长任务可以记录已确认结论、待办事项和来源，让后续步骤继续沿用这些信息。</p>
+  </div>
+  <div class="frame">
+    <h3>必要时回查</h3>
+    <p>长对话可能被压缩或截断；摘要会丢失细节，重要数字和条件仍可回到原文核对。</p>
+  </div>
+</div>
+
+<p class="note">上下文管理关注当前步骤需要哪些信息；更长的聊天记录并不保证更准确。</p>
+
+<!--
+参考：《AI Agent Book》第 2 章“上下文压缩策略”。
+https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+例子：整理多次会议记录时，保留决议、负责人、日期和原始记录位置，比让所有讨论反复占据当前上下文更便于继续工作。摘要的准确性仍需要核对。
+-->
+
+---
+
+# Tools：连接信息与实际操作
+
+<div class="split-3">
+  <div class="frame">
+    <h3>感知</h3>
+    <p>读取文件、搜索网页、查询数据，让模型获得当前任务需要的信息。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>执行</h3>
+    <p>生成表格、编辑文档、操作页面，把模型提出的动作变成实际变化。</p>
+  </div>
+  <div class="frame">
+    <h3>协作</h3>
+    <p>委托子 Agent 处理独立工作，或在需要补充信息时与人沟通。</p>
+  </div>
+</div>
+
+<p class="note">模型提出调用 → 软件执行 → 返回结果 → 检查产出。工具报告成功后，仍需确认文件内容或页面状态符合任务目标。</p>
+
+<!--
+参考：《AI Agent Book》第 4 章“工具的分类”。
+工具是访问或操作的接口，环境是工具运行或访问的地方。终端、浏览器等可以提供工具入口，但不宜与感知、执行、协作混作同一层分类。
+本课保留三类主动调用工具，不展开事件触发和异步沟通的技术实现。
+-->
+
+---
+
+# MCP：连接外部系统的统一协议
 
 <div class="split-2">
   <div class="frame accent-panel">
-    <div class="eyebrow">例子：把设计系统接给 agent</div>
-    <ul class="wide-list">
-      <li><strong>Resources</strong>：提供组件文档、变量表、设计规范</li>
-      <li><strong>Tools</strong>：查询某个组件支持哪些属性、获取某个页面的设计数据</li>
-      <li><strong>Prompts</strong>：提供“把 Figma 设计解释成前端实现建议”的模板</li>
+    <h3>统一连接方式</h3>
+    <p>MCP 的全称是 Model Context Protocol。它约定 AI 应用如何发现和使用外部工具、资料与提示模板。</p>
+  </div>
+  <div class="frame">
+    <h3>复用已有连接</h3>
+    <p>文档、日历等系统可以通过 MCP Server（服务端）提供能力；支持协议的 AI 应用可以复用这些连接，减少重复对接。</p>
+  </div>
+</div>
+
+<p class="note">能接上哪些功能，仍取决于产品支持、服务端提供的能力与账号授权；使用工具也可以采用其他连接方式。</p>
+
+<!--
+https://modelcontextprotocol.io/docs/learn/architecture
+https://docs.anthropic.com/en/docs/claude-code/mcp
+MCP 不代表连接后自动获得外部系统全部能力，也不保证不同客户端支持完全一致。
+-->
+
+---
+class: figure-slide
+---
+
+# MCP 提供工具、资料与提示模板
+
+<div class="diagram-figure">
+  <img src="/generated-images/mcp-primitives.png" alt="MCP 三类能力：Tools 可调用动作、Resources 可读取资料、Prompts 可复用提示模板" />
+</div>
+
+<!--
+Tools：可调用动作，如搜索文档、创建日程。
+Resources：可读取资料，如一份手册、一个数据文件。
+Prompts：供用户选用的提示模板，如会议摘要模板。
+一个 MCP Server 可以只提供其中部分能力；各客户端的展示方式不同。
+https://modelcontextprotocol.io/docs/learn/server-concepts
+-->
+
+---
+
+# MCP 连接中的三个角色
+
+<div class="split-3">
+  <div class="frame accent-panel">
+    <h3>AI 应用 / Client</h3>
+    <p>接收任务，通过客户端与服务端交互。例如请求查询下周的空闲会议时间。</p>
+  </div>
+  <div class="frame">
+    <h3>MCP Server</h3>
+    <p>提供日历查询等能力，接收调用请求，并与实际的日历系统连接。</p>
+  </div>
+  <div class="frame">
+    <h3>外部系统</h3>
+    <p>保存日程、文档或业务数据，按实际账号权限处理查询和修改。</p>
+  </div>
+</div>
+
+<p class="note">结果沿连接返回 AI 应用，再进入模型的上下文。模型可以据此继续操作，或向用户说明查询结果。</p>
+
+<!--
+https://modelcontextprotocol.io/docs/learn/architecture
+为非技术听众将 Host 与其内部 Client 放在同一卡片。AI 应用承载模型和连接管理；MCP Client 负责与 Server 通信，Server 再访问外部能力。
+-->
+
+---
+
+# 例子：连接一个文档系统
+
+<div class="split-2">
+  <div class="frame accent-panel">
+    <h3>可提供的能力</h3>
+    <ul>
+      <li><strong>Resources</strong>：一份可读取的报销制度。</li>
+      <li><strong>Tools</strong>：搜索文档、读取内容、创建摘要文件。</li>
+      <li><strong>Prompts</strong>：预设的制度摘要模板。</li>
     </ul>
   </div>
   <div class="frame">
-    <div class="eyebrow">结果会发生什么</div>
-    <p>
-      这时 agent 不用再靠“猜”设计系统长什么样，
-      而是能通过标准接口直接读取资料、调用能力、按约定格式工作。
-    </p>
-    <div class="overlay-note">
-      所以 MCP 的价值，不是让 agent 更聪明，而是让它接外部世界时更统一、更可复用。
-    </div>
+    <h3>一次实际任务</h3>
+    <p>用户询问报销需要哪些材料。Agent 搜索相关制度、读取条款，整理材料清单，并标明原文位置。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>课堂例子：</strong>
-  “把 Figma、Notion、数据库、浏览器统一接给 agent” 这类问题，正是 MCP 最擅长解决的。
-</div>
+<p class="note">这是一个示意连接；实际提供哪几类能力，由具体服务决定。文档访问范围仍受账号权限约束。</p>
+
+<!--
+本页为通用办公示例，不声称某个具体文档产品必然提供全部三类能力。
+https://modelcontextprotocol.io/docs/learn/server-concepts
+-->
 
 ---
 
-# 什么时候值得接一个 MCP server
+# MCP 适用的连接场景
 
-<div class="checklist">
-  <div class="check-item"><div class="check-mark">1</div><div><strong>这个系统你会反复接入</strong>：不是一次性脚本，而是长期要用。</div></div>
-  <div class="check-item"><div class="check-mark">2</div><div><strong>资料和动作都很多</strong>：既要读资料，又要执行操作，手写零散脚本会越来越乱。</div></div>
-  <div class="check-item"><div class="check-mark">3</div><div><strong>多个 agent / 多个产品都要接</strong>：你不想每换一个 agent 产品就重写一次接入层。</div></div>
-  <div class="check-item"><div class="check-mark">4</div><div><strong>你想把接入方式标准化</strong>：希望工具、资料、提示模板都能按统一方式暴露出来。</div></div>
-</div>
-
-<div class="takeaway">
-  <strong>反过来说：</strong>
-  如果只是一次性调用某个简单 API，往往直接写 tool 就够了，不一定非要上 MCP。
-</div>
-
----
-class: diagram-slide
----
-
-<div class="image-frame full-diagram">
-  <img src="/generated-images/skill-pack.png" alt="Skill Pack 包含触发条件、步骤说明、示例、输出标准、注意事项、脚本和资料" />
-</div>
-
----
-class: title-compact page-tight
----
-
-# Skill 被调用时，agent 实际上多了一套工作流程
-
-<div class="connector-flow">
-  <div class="flow-card">
-    <div class="eyebrow">1. 识别任务类型</div>
-    <h3>这像哪类工作</h3>
-    <p>例如做表格、改 PPT、审前端页面、处理 PDF。</p>
+<div class="split-3">
+  <div class="frame">
+    <h3>持续使用同一系统</h3>
+    <p>工作经常涉及文档、日历或内部数据，稳定的连接可以减少反复导入材料。</p>
   </div>
-  <div class="flow-line">→</div>
-  <div class="flow-card accent-panel">
-    <div class="eyebrow">2. 读取 Skill</div>
-    <h3>按既定方法做</h3>
-    <p>查看 <code>SKILL.md</code>、参考资料、模板和工具约束。</p>
+  <div class="frame accent-panel">
+    <h3>多种应用共享能力</h3>
+    <p>多个支持 MCP 的 AI 应用，可以连接同一个服务端，复用已有的接入工作。</p>
   </div>
-  <div class="flow-line">→</div>
-  <div class="flow-card">
-    <div class="eyebrow">3. 执行并验证</div>
-    <h3>交付可检查结果</h3>
-    <p>调用脚本、生成文件、截图检查、运行测试或给出风险说明。</p>
+  <div class="frame">
+    <h3>已有合适的服务端</h3>
+    <p>外部系统已经提供所需能力，客户端也支持对应的连接和授权方式。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>一句话：</strong>
-  prompt 是“这次你怎么答”，skill 是“以后遇到这类任务，你都按这套流程做”。
+<p class="note">一次性的文件分析可以直接上传或读取文件；是否使用 MCP，取决于实际的连接需求。</p>
+
+<!--
+https://modelcontextprotocol.io/docs/learn/architecture
+保持在使用层面，不展开部署、协议版本或具体认证配置。
+-->
+
+---
+class: figure-slide
+---
+
+# Skill：可复用的任务资料包
+
+<div class="diagram-figure">
+  <img src="/generated-images/skill-pack.png" alt="Skill 可以包含任务说明、工作步骤、模板、参考资料和可选脚本" />
 </div>
+
+<!--
+https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+Skill 通常以说明文件为入口，按任务需要读取相关材料。具体目录要求和加载方式取决于产品；本课不展开文件格式。
+-->
 
 ---
 
-# Skill 和 Prompt、Tool、Memory 的区别
+# Skill 如何参与一次任务
+
+<div class="split-3">
+  <div class="frame">
+    <h3>识别适用任务</h3>
+    <p>系统根据任务与 Skill 描述，判断是否需要读取相关做法，例如整理会议纪要。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>读取工作方法</h3>
+    <p>将步骤说明、示例、模板和必要资料放入上下文，作为这次执行的参考。</p>
+  </div>
+  <div class="frame">
+    <h3>调用工具并检查</h3>
+    <p>Agent 使用已有工具生成文档，再核对任务要求、关键事实和输出格式。</p>
+  </div>
+</div>
+
+<p class="note">Skill 可以让做法复用；结果仍取决于资料、模型、工具和检查过程。</p>
+
+<!--
+https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+参考：《AI Agent Book》第 2 章“动态提示词与 Agent Skills”。
+加载和触发方式由产品实现决定，也可以由用户主动指定。Skill 不会自动赋予额外权限，也不保证执行结果正确。
+-->
+
+---
+
+# Prompt、Tool、Skill、Memory 的区别
 
 <table>
   <thead>
-    <tr>
-      <th>概念</th>
-      <th>它主要解决什么</th>
-      <th>一句话理解</th>
-    </tr>
+    <tr><th>概念</th><th>主要作用</th><th>办公例子</th></tr>
   </thead>
   <tbody>
-    <tr>
-      <td><code>Prompt</code></td>
-      <td>当下这一步怎么说清楚</td>
-      <td>告诉模型这次该怎么回答</td>
-    </tr>
-    <tr>
-      <td><code>Tool</code></td>
-      <td>让 agent 能执行某个动作</td>
-      <td>给它一只手</td>
-    </tr>
-    <tr>
-      <td><code>Skill</code></td>
-      <td>把一整套做事方法打包复用</td>
-      <td>教它一套手法</td>
-    </tr>
-    <tr>
-      <td><code>Memory</code></td>
-      <td>让系统记住过去发生过什么</td>
-      <td>让它别每次都从零开始</td>
-    </tr>
+    <tr><td>Prompt · 提示词</td><td>说明当前任务和要求</td><td>把这份会议记录整理成一页摘要。</td></tr>
+    <tr><td>Tool · 工具</td><td>执行具体的读取或操作</td><td>打开记录文件，创建整理后的文档。</td></tr>
+    <tr><td>Skill · 技能</td><td>复用一类任务的工作方法</td><td>按固定结构提取议题、决议和待办。</td></tr>
+    <tr><td>Memory · 记忆</td><td>保留并取回跨任务信息</td><td>沿用用户偏好的“结论先行”格式。</td></tr>
   </tbody>
 </table>
 
-<div class="takeaway">
-  <strong>课堂重点：</strong>
-  Skill 之所以值得单独讲，是因为它不是单点功能，而是“经验、资料、脚本、规范”的打包体。
-</div>
+<p class="note">这些能力可以组合使用；同一个任务不一定需要全部用到。</p>
 
----
-class: title-compact page-tight
----
-
-# 真实工作里，一个 Skill 长什么样
-
-<div class="split-2">
-  <div class="frame accent-panel">
-    <div class="eyebrow">例子：修前端页面视觉问题</div>
-    <ul class="wide-list">
-      <li><code>SKILL.md</code>：规定先截图、再找组件、再改样式、最后回归验证</li>
-      <li>scripts：自动跑构建、截图、对比差异</li>
-      <li>docs：项目里的设计规范、命名规则、组件约束</li>
-    </ul>
-  </div>
-  <div class="frame">
-    <div class="eyebrow">为什么这比一段 prompt 强</div>
-    <ul class="wide-list">
-      <li>prompt 只说“这次怎么做”</li>
-      <li>skill 把“以后每次都怎么做”固化下来</li>
-      <li>新 agent 来了也能复用，不必每次重新讲流程</li>
-    </ul>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>一句话：</strong>
-  Skill 适合沉淀“反复出现的任务套路”，而不只是解决某一次提问。
-</div>
+<!--
+参考：《AI Agent Book》第 2—4 章。
+这里按主要作用区分，实际产品的边界可能有所重叠。例如 Skill 中也包含提示文本，但其用途是复用任务方法及相关材料。
+-->
 
 ---
 
-# 什么时候该把 prompt 升级成 skill
+# 例子：会议纪要 Skill
 
 <div class="split-2">
   <div class="frame">
-    <div class="eyebrow">继续用 prompt 就够</div>
-    <ul class="wide-list">
-      <li>这是一次性任务</li>
-      <li>步骤很短</li>
-      <li>不需要脚本和资料包</li>
-      <li>下次大概率不会再用</li>
+    <h3>资料包中的内容</h3>
+    <ul>
+      <li>步骤：提取议题、决议和待办，区分已确认与待确认事项。</li>
+      <li>模板：使用固定栏目；示例：展示一份完整的纪要。</li>
     </ul>
   </div>
   <div class="frame accent-panel">
-    <div class="eyebrow">应该升级成 skill</div>
-    <ul class="wide-list">
-      <li>同类任务反复出现</li>
-      <li>你总在重复讲同一套要求</li>
-      <li>任务依赖文档、脚本、模板、规则</li>
-      <li>你希望团队里不同 agent 都按同一套套路做事</li>
+    <h3>每次任务中的变化</h3>
+    <ul>
+      <li>读取这次会议的原始记录，填入实际内容。</li>
+      <li>核对负责人和日期；原文缺失的信息保留为空或标明待确认。</li>
     </ul>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>课堂判断：</strong>
-  当“怎么做”开始稳定重复时，就不该只靠 prompt 记忆了，而该把它升级成 skill。
-</div>
+<p class="note">复用的是整理方法和格式；每次会议的事实仍来自本次记录。</p>
+
+<!--
+这是教学示例，不依赖特定产品内置的 Skill。
+https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+讲解时可提到：资料包可以包含脚本，但并非所有 Skill 都需要脚本。
+-->
 
 ---
 
-# Memory：为什么 agent 不能每一轮都失忆
+# 临时要求与可复用的方法
+
+<div class="split-2">
+  <div class="frame">
+    <h3>一次性的要求</h3>
+    <p>偶尔改写一段邮件、总结一篇文章，任务说明和相关材料通常就能表达清楚。</p>
+    <p>内容和格式随这一次任务变化，直接在对话中补充即可。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>反复使用的方法</h3>
+    <p>每周整理纪要、每月制作固定格式的汇报，可以把步骤、示例和模板整理为 Skill。</p>
+    <p>流程变化时，更新共享的方法和资料，后续任务再读取新版本。</p>
+  </div>
+</div>
+
+<p class="note">任务频率、方法是否稳定、是否依赖固定资料，决定了复用的价值。</p>
+
+<!--
+参考：《AI Agent Book》第 2 章“动态提示词与 Agent Skills”。
+避免把 Skill 描述成必然优于普通提示词的升级路径。简单或临时任务不必增加资料包维护工作。
+-->
+
+---
+
+# 当前上下文、用户记忆与知识库
 
 <div class="split-3">
-  <div class="term-card">
-    <h3>短期状态</h3>
-    <p>这次任务当前的消息、步骤、中间结果。</p>
+  <div class="frame">
+    <h3>当前上下文</h3>
+    <p>模型这一轮正在使用的信息，例如本次聊天、读到的材料与任务进展。</p>
   </div>
-  <div class="term-card">
-    <h3>长期记忆</h3>
-    <p>用户偏好、项目约定、反复用到的知识。</p>
+  <div class="frame accent-panel">
+    <h3>用户记忆</h3>
+    <p>跨任务保存的偏好与背景，例如喜欢简短回复、汇报采用结论先行的格式。</p>
   </div>
-  <div class="term-card accent-panel">
-    <h3>工作记忆</h3>
-    <p>本轮任务生成的摘要、研究结论、临时记录。</p>
+  <div class="frame">
+    <h3>共享知识库</h3>
+    <p>可供多人查询的资料，例如公司制度、操作手册与常见问题说明。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>一句话：</strong>
-  <code>State</code> 更像为了把这次任务做完，<code>Memory</code> 更像为了让下一次做得更好。
-</div>
+<p class="note">记忆和知识库中的内容，需要被取回并传入模型，才进入当前上下文；保存资料不会自动改变模型参数。</p>
 
-<div class="source-line">
-  资料：Anthropic Claude Code Memory 文档；LangChain Long-term Memory 文档。
-</div>
+<!--
+参考：《AI Agent Book》第 3 章“用户记忆系统”“RAG 基础”。
+用户记忆不一定完全私有或自动生成，具体取决于产品。这里强调信息用途与使用时机，不把短期状态和工作记忆画成互不重叠的存储层。
+-->
 
 ---
 
-# 如果没有 Memory，agent 会怎么犯傻
+# 记忆的保存、读取与更新
+
+<div class="split-3">
+  <div class="frame">
+    <h3>保存可复用信息</h3>
+    <p>“以后汇报都用一页摘要”可以成为长期偏好；“这周五前完成”属于本次任务安排。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>任务需要时读取</h3>
+    <p>下次整理汇报时，取回输出偏好并加入上下文。保存过的信息也可能尚未被取回。</p>
+  </div>
+  <div class="frame">
+    <h3>信息变化时更新</h3>
+    <p>联系人或习惯改变后，旧记录需要修订；一次临时例外不一定适合作为长期规则。</p>
+  </div>
+</div>
+
+<p class="note">跨会话记忆是否可用、如何保存和删除，取决于具体产品及其设置。</p>
+
+<!--
+参考：《AI Agent Book》第 3 章“记忆的层次结构”“知识应该如何更新”。
+https://docs.anthropic.com/en/docs/claude-code/memory
+讲解可补充：记忆可能由用户指定保存，也可能由产品自动提取，不应假定任何一轮聊天都会永久保留。
+-->
+
+---
+
+# RAG：查到资料后再回答
+
+<div class="flow-row">
+  <div class="flow-step"><strong>提出问题</strong><p>出差报销需要哪些材料？</p></div>
+  <div class="flow-step"><strong>检索资料</strong><p>查找相关制度和操作说明。</p></div>
+  <div class="flow-step"><strong>加入上下文</strong><p>取回相关条款、版本和来源。</p></div>
+  <div class="flow-step"><strong>形成回答</strong><p>整理材料清单，并注明依据。</p></div>
+</div>
+
+<p class="lead">RAG 即“检索增强生成”：让回答使用外部资料，补充模型原有知识。</p>
+<p class="note">Agent 可以根据查到的内容继续检索；资料没找到或依据不足时，回答中可以明确保留这些缺口。</p>
+
+<!--
+参考：《AI Agent Book》第 3 章“RAG 基础：构建 Agent 的知识获取管道”“智能体化 RAG”。
+RAG 全称 Retrieval-Augmented Generation。这里不展开分块、嵌入或向量数据库。
+知识检索也可以是固定流程，并非所有 RAG 都是自主 Agent。检索到的材料仍可能存在错误，需要核查来源。
+-->
+
+---
+
+# 知识库回答的依据
 
 <div class="split-2">
   <div class="frame">
-    <div class="eyebrow">没有 memory 的典型表现</div>
-    <ul class="wide-list">
-      <li>上一轮已经确认过的约束，下一轮又忘了</li>
-      <li>同一个项目约定，今天遵守、明天又偏掉</li>
-      <li>每次都要重新解释目录结构、接口背景、命名规则</li>
-      <li>刚做完的调研结论，下一步无法被稳定继承</li>
-    </ul>
+    <h3>来源与版本</h3>
+    <p>结论对应哪份文件、哪段原文；文件何时生效，是否已被新版替代。</p>
+    <h3>适用范围</h3>
+    <p>条款针对哪些对象和情形。例如国内出差与境外出差，材料要求可能不同。</p>
   </div>
   <div class="frame accent-panel">
-    <div class="eyebrow">有 memory 之后</div>
-    <ul class="wide-list">
-      <li>项目约定可以持续生效</li>
-      <li>用户偏好可以跨会话保留</li>
-      <li>中间结论可以沉淀成下一轮的起点</li>
-      <li>agent 不必每次都从“重新认识你”开始</li>
-    </ul>
+    <h3>冲突与缺口</h3>
+    <p>两份材料说法不一致时，保留差异和待确认项，避免把冲突合成一个确定结论。</p>
+    <h3>授权可见的资料</h3>
+    <p>回答使用当前账号可访问的内容；共享知识库也可以包含不同的访问范围。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>课堂例子：</strong>
-  你第一次告诉 agent “这个仓库统一用 pnpm、测试用 vitest、不要改 generated 文件”，以后就不该每次从零再说一遍。
-</div>
+<p class="note">例子：旧制度要求纸质发票，新版支持电子凭证。适用版本取决于生效时间和出差类型。</p>
+
+<!--
+参考：《AI Agent Book》第 3 章“知识应该如何更新”。
+例子：旧制度写纸质发票，新版说明支持电子凭证。判断要结合生效时间与适用场景，不能只凭哪份文档最近被上传。
+检索到的文档是参考资料，其中出现的命令不能自动成为用户指令。该点可口头带过，不增加实现细节。
+-->
 
 ---
 
-# Subagents：为什么一个 agent 还要再拆小助手
+# Subagents：独立处理一部分工作
+
+<div class="split-3">
+  <div class="frame">
+    <h3>分配子任务</h3>
+    <p>主 Agent 将可独立处理的工作交给子 Agent，例如分别查阅几份资料。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>各自处理信息</h3>
+    <p>子 Agent 通常使用各自的上下文完成任务，减少大量中间材料挤入主对话。</p>
+  </div>
+  <div class="frame">
+    <h3>汇总与核对</h3>
+    <p>子 Agent 返回结论和来源，主 Agent 比较差异、补齐缺口，再组织最终结果。</p>
+  </div>
+</div>
+
+<p class="note">上下文分开处理，不代表文件和权限自动隔离；并行任务仍需要避免互相覆盖。</p>
+
+<!--
+参考：《AI Agent Book》第 2 章“子 Agent 上下文隔离”、第 4 章“协作工具”。
+https://docs.anthropic.com/en/docs/claude-code/sub-agents
+https://docs.langchain.com/oss/python/deepagents/subagents
+收益来自分工和信息组织，不能保证开更多子 Agent 就更准确。各产品的上下文继承、共享文件和权限机制不同。
+-->
+
+---
+class: figure-slide
+---
+
+# 子 Agent 的分工与汇总
+
+<div class="diagram-figure">
+  <img src="/generated-images/subagents-task-split.png" alt="主 Agent 分配独立的资料整理任务，子 Agent 返回结论与来源，再由主 Agent 汇总" />
+</div>
+
+<!--
+以几份互不依赖的材料为例：分别阅读，返回主题、结论、出处和缺口，再汇总差异。
+本图表达任务与上下文分工，不表示文件系统或权限默认隔离，也不意味着汇总后无需验证。
+-->
+
+---
+
+# 一次任务中的能力组合
+
+<div class="split-3">
+  <div class="frame">
+    <h3>获得信息</h3>
+    <p>上下文承载当前任务；记忆补充偏好，知识库提供可查询资料。</p>
+  </div>
+  <div class="frame accent-panel">
+    <h3>完成操作</h3>
+    <p>模型判断下一步，工具读取和修改内容；MCP 可以承担外部系统的连接。</p>
+  </div>
+  <div class="frame">
+    <h3>复用与分工</h3>
+    <p>Skill 提供已有方法；需要独立处理多项工作时，可以使用子 Agent。</p>
+  </div>
+</div>
+
+<p class="note">整理一份文档可能只需模型、上下文和文件工具。更复杂的任务，再按实际需要组合其他能力。</p>
+
+<!--
+参考：《AI Agent Book》第 1—4 章。
+各能力不是所有 Agent 都必需的固定层。比如本地读取文件无需经过 MCP，一次短任务也未必需要长期记忆或子 Agent。
+-->
+
+---
+
+# 不同能力解决不同问题
 
 <div class="split-2">
   <div class="frame">
-    <div class="eyebrow">为什么要拆</div>
-    <ul class="wide-list">
-      <li>主 agent 的上下文太杂</li>
-      <li>某个子任务很专业</li>
-      <li>想把不同任务并行化</li>
-      <li>想隔离权限和工具范围</li>
-    </ul>
+    <h3>访问和操作</h3>
+    <p>Tools 提供具体动作；需要连接外部系统时，MCP 可以统一接入方式。</p>
+    <h3>依据和连续性</h3>
+    <p>知识库提供业务资料；Memory 保存与取回跨任务有用的信息。</p>
   </div>
   <div class="frame accent-panel">
-    <div class="eyebrow">拆了以后有什么好处</div>
-    <ul class="wide-list">
-      <li>上下文更干净</li>
-      <li>专门任务成功率更高</li>
-      <li>结果更容易汇总</li>
-      <li>主 agent 不用记住所有细节</li>
-    </ul>
+    <h3>稳定重复的方法</h3>
+    <p>Skills 复用步骤、模板与资料，减少同类任务反复说明的工作。</p>
+    <h3>可独立处理的工作</h3>
+    <p>Subagents 提供分工方式；汇总时仍需要核对来源、差异与最终结果。</p>
   </div>
 </div>
 
-<div class="takeaway">
-  <strong>教学重点：</strong>
-  Subagent 的第一价值，不是“更炫”，而是 <strong>context isolation</strong>，也就是上下文隔离。
-</div>
+<p class="note">这些能力没有统一的添加顺序，选择取决于任务缺少什么、产品已经提供什么。</p>
 
-<div class="source-line">
-  资料：Anthropic Claude Code Subagents 文档；LangChain Deep Agents Subagents 文档。
-</div>
-
----
-class: diagram-slide
----
-
-<div class="image-frame full-diagram">
-  <img src="/generated-images/subagents-task-split.png" alt="主 agent 将复杂任务拆给调研、实现修复和验证子 agent，并保持上下文隔离" />
-</div>
-
----
-
-# 把这些能力组合起来，才像今天的 agent
-
-<div class="card-grid">
-  <div class="compare-card">
-    <h3>模型</h3>
-    <p>负责理解需求、判断下一步。</p>
-  </div>
-  <div class="compare-card">
-    <h3>Tools</h3>
-    <p>终端、文件、浏览器、API。</p>
-  </div>
-  <div class="compare-card">
-    <h3>MCP</h3>
-    <p>把外部系统接进来。</p>
-  </div>
-  <div class="compare-card">
-    <h3>Skills</h3>
-    <p>沉淀领域做法和固定套路。</p>
-  </div>
-  <div class="compare-card">
-    <h3>Memory</h3>
-    <p>保存上下文、项目约定和历史经验。</p>
-  </div>
-  <div class="compare-card accent-panel">
-    <h3>Subagents</h3>
-    <p>把调研、实现、检查拆给不同角色。</p>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>这一页要记住：</strong>
-  今天常见的 agent 看起来很强，往往不是因为模型突然无所不能，而是因为这些能力层终于被接到一起了。
-</div>
-
----
-class: title-compact page-tight
----
-
-# 只能优先补 4 层能力时，先补什么
-
-<div class="step-grid-2 compact-step">
-  <div class="step-list">
-  <div class="step-item">
-    <h3>先补 Tools</h3>
-    <p>如果 agent 连文件、终端、网页都碰不到，再聪明也只能停在“说”。</p>
-  </div>
-  <div class="step-item">
-    <h3>再补 Retrieval / RAG</h3>
-    <p>如果它看不到项目文档、知识库、接口说明，就会大量依赖猜测。</p>
-  </div>
-  <div class="step-item">
-    <h3>然后补 Memory / Rules</h3>
-    <p>如果不能保留约定和历史结论，它每一轮都会像重新入职一样。</p>
-  </div>
-  </div>
-  <div class="step-list" style="counter-reset: step 3;">
-  <div class="step-item">
-    <h3>最后再补 Skills / Subagents</h3>
-    <p>当任务开始重复、分工开始复杂时，再把方法沉淀和角色拆分补上。</p>
-  </div>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>学生版记忆法：</strong>
-  先让它能做，再让它能看，再让它能记，最后让它能复用和分工。
-</div>
+<!--
+本页替代原来的固定能力优先级，避免形成所有 Agent 都必须逐层补齐的误解。
+参考：《AI Agent Book》第 1—4 章。
+-->

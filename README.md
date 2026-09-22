@@ -1,368 +1,84 @@
-# AI Agent Slidev Deck Handoff
+# AI Agent：原理与使用
 
-这个项目是一个用于内部分享的 Slidev 课程 deck，主题是 AI Agent 的基本原理、产品形态、能力扩展层和工程演进。
+面向非技术听众的通用入门课，使用 Slidev 编写。课程从 LLM 的生成机制讲到 Agent 的执行循环，再介绍产品用法、上下文、工具、记忆、知识库和工程演进。例子覆盖资料整理、会议纪要、搜索、表格与文件操作，不要求编程背景。
 
-目标不是做一份泛泛的大纲，而是做一套可以讲给非计算机专业同事听的课程讲义。听众可以理解一点编程概念，例如会 C 语言，但不要默认他们懂复杂系统工程术语。
+全课 **62 页，约 90 分钟**，包含现场演示与交流。具体内容和讲者备注以 `slides.md` 及其导入的章节为准；[课程目录](course-outline/README.md)提供完整页码索引。
 
-## 当前核心方向
+## 运行
 
-这套课的主线已经确定：
-
-1. 先讲 `LLM` 的基本机制和限制。
-2. 再解释为什么仅靠 chatbot 不够，为什么需要 agent。
-3. 强调 agent 不是模型本身，而是承载模型的软件系统。
-4. 讲清楚 agent 为什么比早期 chatbot 强很多：关键是 `Agent Runtime（Agent 运行层）`、`Tool Use（工具调用）`、状态管理和反馈闭环；这里的 runtime 不是泛指 OS / Node.js / 浏览器运行时，而是 agent 应用内部驱动 “模型 -> 动作 -> 观察 -> 再行动” 的运行层。`Shell Access（命令行执行）` 是一种很强的执行类工具，不要讲成 Runtime 本身。
-5. 单独开一章介绍市面上常见的 agent 产品，重点会逐渐转向 `Codex`，后续计划在这里插入视频展示 Codex 能力。
-6. 讲 agent 的能力扩展层：Tools、RAG、MCP、Skills、Memory、Subagents。
-7. 最后讲 `Prompt Engineering -> Context Engineering -> Harness Engineering` 的演进原因。
-
-用户特别强调：
-
-- 不要把 `agent` 过度讲成 `coding agent`。Codex 也可以做代码之外的任务。
-- 观点句用中文即可，不要中英重复同一句废话。
-- 专业术语可以保留英文，但第一次出现要补中文解释。
-- 不要自造概念，尽量用业界已有术语，例如 `ReAct`、`Runtime`、`Harness`、`MCP`、`Skill`。
-- 注意术语边界：`Runtime` 在通用软件里可以指 OS、语言、浏览器等运行时；本 deck 讲 agent 能力边界时，应具体说 `Agent Runtime / Agent 运行层`。`Harness` 是围绕 agent 的任务约束、上下文组织、工具配置、验证和协作设计。两者相关，但不能混成同义词。
-- 不要为了照顾非计算机专业听众而跳过计算机基本概念。正确做法是正常讲核心概念，并把必要的基础补清楚，例如 `软件`、`程序`、`进程`、`运行环境`、`Shell`、`API`、`权限`。少用“办事软件”“像助手”这类泛泛类比替代定义；类比只能辅助理解，不能替代概念本身。
-- 内容要像教案，不要像提纲。要让同事真的能理解并上手。
-
-## 当前文件结构
-
-入口文件：
-
-- `slides.md`
-
-章节文件：
-
-- `slides/01-llm-why-agent.md`
-- `slides/02-products-and-usage.md`
-- `slides/03-capability-stack.md`
-- `slides/04-engineering-evolution.md`
-
-全局样式：
-
-- `styles/index.css`
-
-课程目录索引：
-
-- `course-outline/README.md`
-
-配图规划：
-
-- `public/generated-images/image-plan.md`
-
-产品截图：
-
-- `public/products/claude-code.webp`
-- `public/products/codex.webp`
-- `public/products/cursor.webp`
-- `public/products/openclaw-chatbot.png`
-- `public/products/openclaw-web.avif`
-- `public/products/n8n.png`
-
-旧 SVG 图：
-
-- `public/generated-images/*.svg`
-
-这些旧 SVG 图用户明确不喜欢，当前不要继续往 slide 里引用。后续应使用 GPT image 生成中文讲解图，再嵌入 deck。
-
-## 当前章节状态
-
-### `slides.md`
-
-包含：
-
-- 封面页
-- chatbot / agent / workflow 对比页
-- 课程路线页
-- `src` 导入四个章节文件
-
-注意：
-
-- 之前封面页里放过产品截图拼图，用户认为产品介绍不应该掺在第一张 agent 介绍里。
-- 现在封面只讲 agent 课程主题，产品章节已经单独放到 `slides/02-products-and-usage.md`。
-
-### `slides/01-llm-why-agent.md`
-
-包含：
-
-- 章节页：先讲 LLM 为什么不够
-- `LLM` 的 `next-token prediction`
-- 为什么“词语接龙”机制已经很强
-- 最早 chatbot 的天花板
-- 为什么我们需要 agent
-- Agent 是什么，不是什么
-- Agent 和 LLM 的关系
-- `ReAct`
-- Agent 为什么比最早的 chatbot 强很多
-- `Shell Access` 为什么扩大能力边界
-
-重要已修复问题：
-
-- 文件末尾曾经残留一个单独的 `---`，导致第 14 页空白。
-- 这个残留分隔线已经删除。
-
-### `slides/02-products-and-usage.md`
-
-现在是独立产品章节，开头新增了章节页：
-
-- 市面上常见的 Agent 产品
-
-包含：
-
-- 常见 agent 产品形态
-- 不同产品背后的共同 agent 内核
-- Claude Code 特点与边界
-- Codex 特点与边界
-- 使用 Claude Code / Codex 的 6 条规则
-- 第一次把任务交给 agent 工具的模板
-- Claude Code / Codex / Cursor 选择建议
-- 什么是适合交给 agent 的任务
-- 新手常见错误
-
-后续重点：
-
-- 用户想重点介绍 `Codex`。
-- 这里后续需要预留或新增视频展示页，用于放 Codex 能力演示。
-
-### `slides/03-capability-stack.md`
-
-包含：
-
-- Agent capability stack
-- Tools
-- MCP 是什么
-- MCP 三原语
-- 一个 MCP server 在真实工作里长什么样
-- 什么时候值得接 MCP server
-- Skill 是什么
-- Skill / Prompt / Tool / Memory 区别
-- 一个 Skill 在真实工作里长什么样
-- 什么时候该把 prompt 升级成 skill
-- Memory
-- 没有 Memory 会怎样
-- Subagents
-- 复杂任务如何拆给多个 Subagents
-- 能力组合总结
-- 优先补哪 4 层能力
-
-用户希望这部分继续补细：
-
-- `MCP` 可以单独讲几页。
-- `Skill` 也可以单独讲几页。
-- 需要更像教学，不要只给结论卡片。
-
-### `slides/04-engineering-evolution.md`
-
-包含：
-
-- 为什么最早是 `Prompt Engineering`
-- 为什么演进到 `Context Engineering`
-- 为什么 `Context Engineering` 不够
-- `Harness Engineering`
-- `Prompt -> Context -> Harness` 演进逻辑
-- Agent 发展历程
-- 什么时候该用 Agent
-- 总结
-- 参考资料
-
-用户之前认为这条线最需要讲清楚“为什么会演进”，不要只写三个名词。
-
-## 样式与排版状态
-
-当前样式整体偏 Claude 风格：
-
-- 暖色纸张背景
-- serif 大标题
-- terracotta / warm orange 作为强调色
-- ivory 卡片
-- section-dark 章节页
-
-样式文件：
-
-- `styles/index.css`
-
-已经做过的修复：
-
-- 修掉了 inline `code` 黑底黑字问题。
-- 调整了全局标题、卡片 padding、列表间距，减少溢出。
-- 给长标题页增加了 `title-compact` 和 `page-tight`。
-- 给规则页增加了 `rule-mosaic`、`rule-card`。
-- 给工具页增加了 `tools-three`。
-- 将 section 页从过度居中改成偏上布局，减少空白感。
-
-仍需注意：
-
-- 新增内容时要检查高度，不要让卡片写到页面外。
-- 不要每页都堆白色卡片，用户要求排版灵活。
-- 图片页、定义页、表格页、对比页应该使用不同布局。
-- 不要再加入看起来像空白页的孤立 `---`。
-
-## 空白页问题的已知原因
-
-之前出现空白页主要有两个原因：
-
-1. 某些页面前面多写了：
-
-```md
----
-
----
-class: ...
----
-```
-
-这会被 Slidev 解释成一张真正的空白页。
-
-2. 某个章节文件末尾残留了一个单独的 `---`。
-
-这个会导致章节末尾多出一张空 slide。
-
-后续编辑时，遇到空白页优先检查：
+项目使用 Node.js 20.12 或更高版本，以及 npm。
 
 ```bash
-rg -n '^---$' slides.md slides
-tail -n 20 slides/*.md
-```
-
-## 图像策略
-
-用户明确不喜欢旧 SVG 图。后续应使用 GPT image 生成中文讲解图。
-
-图片使用原则：
-
-- 定义、判断、边界页：文字排版为主。
-- 机制、流程、结构页：图文结合或整页图。
-- 产品形态页：优先使用真实产品截图。
-- 复杂能力页：用图建立直觉，再用文字讲边界和例子。
-
-目前配图计划已写在：
-
-- `public/generated-images/image-plan.md`
-
-优先生成 5 张图：
-
-1. `LLM 的基本机制：next-token prediction`
-2. `ReAct / agent loop`
-3. `MCP 的 3 个原语`
-4. `Skill 是什么`
-5. `Prompt -> Context -> Harness` 演进图
-
-注意：
-
-- 图片中文字要用中文。
-- 图要帮助理解关系、流程、结构，不要为了装饰而放图。
-- 图像风格可以不完全匹配 PPT，但必须讲清楚。
-
-## Image generation rule
-
-GPT image 工具默认会先把生成图保存到：
-
-- `/Users/kay/.codex/generated_images/...`
-
-这个目录只当作临时输出区，不要在 Slidev deck 里直接引用它。
-
-正式用于课程的图片必须先复制到项目目录：
-
-- `public/generated-images/`
-
-Slidev 中只引用项目内路径，例如：
-
-```md
-<img src="/generated-images/llm-next-token.png" />
-```
-
-推荐命名方式：
-
-- `llm-next-token.png`
-- `react-agent-loop.png`
-- `mcp-primitives.png`
-- `skill-pack.png`
-- `prompt-context-harness.png`
-
-后续生成图片时的固定流程：
-
-1. 使用 GPT image 生成候选图。
-2. 从 `/Users/kay/.codex/generated_images/...` 里选择最终版本。
-3. 复制到 `public/generated-images/`。
-4. 只在 slide 中引用 `/generated-images/...`。
-5. 原始生成图可以留在 `.codex/generated_images`，不需要删除。
-
-视觉协作约定：
-
-- 用户会作为 human reviewer 审核图片效果。生成或替换图片后，不要每次都主动截图确认；除非用户说效果不好、要求检查，或者页面明显存在技术风险，才需要再截图验证。
-- 讲解图的底色优先使用干净的浅暖纸色，接近 `#f5f4ed` / `#faf9f5`，可以有很轻的纸张纹理，但不要用偏黄、偏脏、旧纸感过重的背景。
-- 机制图可以保留 Claude 风格的 terracotta 线条、warm ring、手绘感图标，但文字和结构必须优先准确，不要为了风格重绘导致术语或中文内容变形。
-
-## 当前 image generation 状态
-
-已经调用过一次 GPT image 生成 `LLM 的基本机制：next-token prediction` 图。
-
-生成结果默认保存在：
-
-- `/Users/kay/.codex/generated_images/019db7e0-cbcb-7f90-9ccb-67c1bb1106c6/`
-
-该目录下有多个候选 PNG：
-
-- `ig_009fddb3d58e874f0169e9734d7cd4819199fdb91e357c6767.png`
-- `ig_02e0678a88aa87e10169eac01a63248191ab6285ebda2b427d.png`
-- `ig_0f195a8ff4eb12650169e9d1a949ac8191a28360990e75b693.png`
-
-还有一个较新的生成结果：
-
-- `/Users/kay/.codex/generated_images/019dbcf9-53f8-7bc2-a096-ad04c3f18d9b/ig_037eb77431624d7b0169eabfa0dfd48191b0581930fec3b8e5.png`
-
-这些图片还没有被复制进项目，也还没有嵌入 deck。新窗口接手时应先查看这些图片，选一个复制到：
-
-- `public/generated-images/llm-next-token.png`
-
-然后再改 `slides/01-llm-why-agent.md` 的对应页面。
-
-## 运行与验证
-
-常用命令：
-
-```bash
+npm ci
 npm run dev
-npm run build
 ```
 
-最近一次状态：
-
-- `npm run build` 已通过。
-
-每次改完建议至少运行：
+其他命令：
 
 ```bash
 npm run build
+npm run export
 ```
 
-如果处理视觉问题，建议打开 `npm run dev` 预览，并重点看：
+`build` 生成静态站点到 `dist/`。`export` 导出 PDF，需要本机可用的 Playwright Chromium；首次运行如提示缺少浏览器，可按终端提示安装。
 
-- 是否有空白页
-- 是否有文字溢出页面
-- 标题是否怪异换行
-- 章节页是否过空
-- 图片是否真正服务于讲解
+## 文件结构
 
-但不要把“截图确认”当成默认习惯。这个项目里图片审美和最终取舍由用户现场审核；自动截图主要用于排查布局、溢出、空白页等工程问题。
+| 路径 | 内容 |
+| --- | --- |
+| `slides.md` | 封面、工具接入演示、三种处理方式、课程路线与章节导入 |
+| `slides/01-llm-why-agent.md` | LLM、Agent、运行层、工具与反馈循环 |
+| `slides/02-products-and-usage.md` | 产品入口、任务协作、Spec / Verifier / Environment |
+| `slides/03-capability-stack.md` | 上下文、Tools、MCP、Skills、Memory、RAG、Subagents |
+| `slides/04-engineering-evolution.md` | Prompt → Context → Harness、演进与任务选择 |
+| `styles/index.css` | 全局排版与组件样式 |
+| `public/generated-images/` | 机制讲解图；当前使用 14 张原版 `.png` |
+| `public/products/` | 产品截图 |
+| `course-outline/README.md` | 与实际课件同步的页面索引 |
+| `DESIGN-claude.md` | 本课的视觉规范 |
 
-## 新上下文建议接手顺序
+讲解扩展、引用链接和现场演示提示放在相应页面末尾的 HTML 注释中，由 Slidev 作为讲者备注使用。图片已经嵌入课件，无需从个人临时目录恢复。
 
-1. 先打开 `README.md` 和 `public/generated-images/image-plan.md`。
-2. 检查 `slides/01-llm-why-agent.md` 第一个需要配图的页面。
-3. 查看 `/Users/kay/.codex/generated_images/...` 里已经生成的 `next-token prediction` 候选图。
-4. 选图并复制到 `public/generated-images/llm-next-token.png`。
-5. 把 `LLM 的基本机制：next-token prediction` 页面改成图文结合。
-6. 运行 `npm run build`。
-7. 继续按 `image-plan.md` 生成并嵌入剩下四张图。
+## 90 分钟节奏
 
-## 不要做的事
+| 内容 | 页数 | 讲解时间 |
+| --- | ---: | ---: |
+| 开场与课程路线 | 4 | 5 分钟 |
+| 01 · 从 LLM 到 Agent | 13 | 15 分钟 |
+| 02 · Agent 产品与基本使用 | 11 | 15 分钟 |
+| 03 · Agent 的能力扩展 | 23 | 25 分钟 |
+| 04 · 工程演进 | 11 | 10 分钟 |
+| 现场演示，穿插于开场和产品部分 | — | 15 分钟 |
+| 交流 | — | 5 分钟 |
 
-- 不要继续使用旧 SVG 讲解图。
-- 不要把产品截图重新塞回封面。
-- 不要把产品形态章节和 agent 基础定义混在一起。
-- 不要泛泛写“agent 很强”，要解释强在哪里、边界在哪里、怎么用。
-- 不要把 `agent` 收窄成 `coding agent`。
-- 不要写给老师看的“讲什么 / 讲给谁”，页面内容应该面向听众。
-- 不要留下孤立的 `---`。
+开场接入页只说明 PackyAPI、CC Switch 和演示客户端的作用，操作现场展示。演示前确认账号、模型、连接配置和示例材料可用；课件中不保存真实 API Key。
+
+## 内容与术语
+
+- **Agent 与模型**：模型根据上下文判断下一步；外层软件执行工具、维护进展并处理结果。聊天界面也可以承载 Agent。
+- **运行层与环境**：Agent Runtime 驱动模型、动作和反馈循环；执行环境是工具运行和访问资源的地方。Shell 是命令执行入口，不能代替运行层的定义。
+- **ReAct 与 Agent Loop**：ReAct 是常见的循环方式之一。实际系统也有其他控制流程。
+- **上下文、记忆与知识库**：上下文是当前传入模型的信息；记忆和知识库中的内容被取回后，才参与这一轮判断。保存资料不等于重新训练模型。
+- **工具与扩展**：MCP 统一连接方式，Skill 复用工作方法，Subagents 提供分工。它们按任务和产品能力组合，不是所有 Agent 必须补齐的固定层；子 Agent 的上下文分开，不代表文件或权限自动隔离。
+- **工程演进**：Prompt、Context 与 Harness 的关注范围逐渐扩展，已有方法仍然有用。使用层面的 Spec、Verifier、Environment 分别对应任务说明、验收与反馈、工作环境。
+
+页面直接说明概念、过程和条件。中文表达为主，专业术语首次出现时解释含义；详细机制、额外例子和出处放入讲者备注。保留 AI 工具及工程演进的主线，不扩展为开发框架或 API 实现课。
+
+## 视觉与图片
+
+- 画布统一为 **1280 × 720，16:9**；普通页面标题 **40 px**、正文 **26 px**、辅助文字 **22 px**。封面和章节页按设计规范处理。
+- 正文页通常保留 3—4 个信息点、约 120—180 个汉字。内容放不下时精简或移入备注，不使用局部缩字、`zoom` 或额外缩放掩盖溢出。
+- 暖白底色、深色文字与陶土色强调，采用图页、对照、表格和步骤等合适布局。详细规则见 [DESIGN-claude.md](DESIGN-claude.md)。
+- 当前 14 张机制图已恢复原版，课件引用项目内 `/generated-images/原文件名.png`。`*-v2.png` 文件保留供追溯，当前课件不引用。
+- 本次图片恢复保留 **62 页**及已修改的文字、讲者备注和课程结构。
+- 图页使用原生标题、`class: figure-slide` 和 `.diagram-figure` 图片容器。产品介绍继续使用真实截图。
+
+## 修改后的验证
+
+1. 运行 `npm run build`，确认 Markdown、HTML、图片引用和章节导入可以构建。
+2. 在开发预览中检查页面总数、顺序和图片加载；当前为 62 页。章节末尾的孤立 `---` 或重复分隔符会产生空白页。
+3. 检查新改页面的标题换行、正文溢出、图片裁切和字号；布局调整或配图替换后进行浏览器预览与截图核对。
+4. 检查讲者备注与来源不会出现在投影正文。导出 PDF 后再检查分页和图像可读性。
+5. 页面新增、删除或改名后，同步课程目录及本文件中的页数与节奏。
+
+构建通过只代表技术结构有效，内容准确性和投影可读性仍需要预览核对。最终图片效果由讲者审阅。

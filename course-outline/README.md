@@ -1,49 +1,90 @@
 # AI Agent 课程目录
 
-只保留章节与条目名，不写正文。
+共 **62 页**，面向非技术听众，约 **90 分钟（含演示与交流）**。以下页码对应实际课件顺序，包含封面、章节页、图页与课后阅读。正文和讲者备注以来源文件为准；本目录只维护标题与位置。
 
-## 01 LLM 与为什么需要 Agent
-- 01 为什么现在大家都在讲 Agent
-- 02 LLM 的基本机制：next-token prediction【配图】
-- 03 为什么仅靠 LLM / chatbot 不够
-- 04 Agent 到底是什么，不是什么
-- 05 Agent 和 LLM 的关系：谁是系统，谁是组件
-- 06 ReAct / agent loop：最小工作原理【配图】
-- 07 为什么 Agent 比最早的 chatbot 强很多
-- 08 Runtime / Shell Access 为什么会大幅扩展能力边界
+## 开场与课程路线
 
-## 02 Agent 产品形态与上手使用
-- 01 市面上的 Agent 产品为什么长得不一样
-- 02 不同产品背后，其实是同一个 Agent 内核
-- 03 Claude Code 的特点与边界
-- 04 Codex 的特点与边界
-- 05 Cursor 的位置与特点
-- 06 第一次怎么给 Agent 下任务
-- 07 什么是适合交给 Agent 的任务
-- 08 新手最容易犯的错误
+第 1—4 页，共 4 页。来源：[slides.md](../slides.md)。
 
-## 03 Agent 能力栈
-- 01 Agent capability stack 总览【配图】
-- 02 Tools：让 Agent 真正做事
-- 03 MCP 是什么
-- 04 MCP 的 3 个原语【配图】
-- 05 一个 MCP server 在真实工作里长什么样
-- 06 什么时候值得接一个 MCP server
-- 07 Skill 是什么
-- 08 一个 Skill 在真实工作里长什么样【配图】
-- 09 什么时候该把 prompt 升级成 skill
-- 10 Memory：为什么 agent 不能每一轮都失忆
-- 11 如果没有 Memory，agent 会怎么犯傻
-- 12 Subagents：为什么一个 agent 还要再拆小助手
-- 13 一个复杂任务，怎么拆给多个 Subagents
-- 14 如果你只能优先补 4 层能力，先补什么
+1. 从生成回答到执行任务
+2. 本次演示的工具接入
+3. 同一个任务，三种处理方式
+4. 课程路线
 
-## 04 从 Prompt 到 Context 到 Harness
-- 01 为什么最早大家都在讲 Prompt Engineering
-- 02 为什么演进到 Context Engineering
-- 03 为什么继续演进到 Harness Engineering
-- 04 Prompt -> Context -> Harness 演进图【配图】
-- 05 Agent 发展历程：从 prompt 到 context 到 harness
-- 06 什么时候该用 Agent，什么时候不该用
-- 07 总结：Agent 是一种系统组织方式
+## 01 · 从 LLM 到 Agent
 
+第 5—17 页，共 13 页。来源：[slides/01-llm-why-agent.md](../slides/01-llm-why-agent.md)。
+
+5. 从 LLM 到 Agent
+6. 大语言模型（LLM）如何生成内容
+7. 生成机制能支持哪些能力
+8. 纯文本问答的边界
+9. 从生成回答到执行任务
+10. Agent 是什么
+11. 谁决定任务的下一步
+12. 模型在 Agent 系统中的位置
+13. Agent Loop：判断、行动与反馈
+14. Human-in-the-loop：人工参与执行
+15. 多步任务如何持续推进
+16. Shell：系统命令的执行入口
+17. 工具与环境共同决定可执行的范围
+
+## 02 · Agent 产品与基本使用
+
+第 18—28 页，共 11 页。来源：[slides/02-products-and-usage.md](../slides/02-products-and-usage.md)。
+
+18. Agent 产品与基本使用
+19. Agent 可以出现在不同的入口里
+20. 不同产品中常见的工作机制
+21. Claude Code：围绕文件与工具工作
+22. Claude Code：任务结果与执行条件
+23. Codex：组织任务与查看产出
+24. Codex：多任务怎样衔接
+25. Codex：从任务到可检查的结果
+26. AI 协作的三个部分
+27. 例子：把一组资料整理成简报
+28. 产品差异体现在工作方式中
+
+## 03 · Agent 的能力扩展
+
+第 29—51 页，共 23 页。来源：[slides/03-capability-stack.md](../slides/03-capability-stack.md)。
+
+29. Agent 的能力扩展
+30. Agent 的能力可以按任务组合
+31. 上下文：模型这一轮能看到什么
+32. 上下文会更新，也有容量限制
+33. Tools：连接信息与实际操作
+34. MCP：连接外部系统的统一协议
+35. MCP 提供工具、资料与提示模板
+36. MCP 连接中的三个角色
+37. 例子：连接一个文档系统
+38. MCP 适用的连接场景
+39. Skill：可复用的任务资料包
+40. Skill 如何参与一次任务
+41. Prompt、Tool、Skill、Memory 的区别
+42. 例子：会议纪要 Skill
+43. 临时要求与可复用的方法
+44. 当前上下文、用户记忆与知识库
+45. 记忆的保存、读取与更新
+46. RAG：查到资料后再回答
+47. 知识库回答的依据
+48. Subagents：独立处理一部分工作
+49. 子 Agent 的分工与汇总
+50. 一次任务中的能力组合
+51. 不同能力解决不同问题
+
+## 04 · 工程演进
+
+第 52—62 页，共 11 页。来源：[slides/04-engineering-evolution.md](../slides/04-engineering-evolution.md)。
+
+52. 从回答到持续执行
+53. Prompt Engineering：把要求说明白
+54. Context Engineering：组织当前信息
+55. 从组织信息到组织执行
+56. Harness：围绕 Agent 组织执行
+57. Prompt → Context → Harness
+58. AI 工具的能力如何逐步扩展
+59. 不同任务适合不同的处理方式
+60. 课程回顾
+61. 课后阅读：原理与工程
+62. 课后阅读：工具与使用

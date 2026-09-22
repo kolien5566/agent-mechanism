@@ -2,312 +2,170 @@
 class: section-dark
 ---
 
-<div class="center-stage">
-  <div>
-    <div class="section-mark">Part 1</div>
-    <div class="divider-line"></div>
-    <h1 class="section-title">先讲 LLM 为什么不够</h1>
-    <p class="lead tight">先把地基打稳：不理解 LLM 的机制与局限，就很难理解 agent 为什么会出现。</p>
-    </div>
-</div>
+<div class="center-stage"><div class="section-mark">01 · 基本机制</div><h1 class="section-title">从 LLM 到 Agent</h1><p class="lead">生成机制、工具调用与执行循环，共同解释 Agent 如何工作。</p></div>
 
 ---
-class: diagram-slide
+class: figure-slide
 ---
 
-<div class="image-frame full-diagram">
-  <img src="/generated-images/llm-next-token.png" alt="LLM 的 next-token prediction 机制图" />
-</div>
+# 大语言模型（LLM）如何生成内容
+
+<div class="diagram-figure"><img src="/generated-images/llm-next-token.png" alt="模型根据当前上下文预测下一个 token，并将新 token 加入序列继续生成" /></div>
+
+<!--
+LLM 是大语言模型。Token 是模型处理内容的片段，可能是字、词的一部分或标点，不等于完整词语。
+模型依据上下文计算下一个 token 的概率，选择后继续生成；这描述生成机制，不代表模型只会做简单接龙。
+-->
 
 ---
 
-# 这种“词语接龙”机制，为什么已经很强
+# 生成机制能支持哪些能力
 
 <div class="split-2">
-  <div class="frame">
-    <div class="eyebrow">它擅长什么</div>
-    <div class="checklist">
-      <div class="check-item"><div class="check-mark">✓</div><div>理解语言模式与上下文关系</div></div>
-      <div class="check-item"><div class="check-mark">✓</div><div>生成结构化文本和代码</div></div>
-      <div class="check-item"><div class="check-mark">✓</div><div>做局部推理、归纳和重写</div></div>
-    </div>
-  </div>
-  <div class="frame accent-panel">
-    <div class="eyebrow">但这不等于什么</div>
-    <div class="checklist">
-      <div class="check-item"><div class="check-mark">!</div><div>不等于它天然会操作外部世界</div></div>
-      <div class="check-item"><div class="check-mark">!</div><div>不等于它天然能维护长期状态</div></div>
-      <div class="check-item"><div class="check-mark">!</div><div>不等于它天然能把一件事从头做到尾</div></div>
-    </div>
-  </div>
+  <div class="frame accent-panel"><h3>语言与信息处理</h3><ul><li>理解上下文，提取关键信息</li><li>归纳、改写、翻译与推理</li><li>生成文字、结构化数据和代码</li></ul></div>
+  <div class="frame"><h3>任务执行所需的配套</h3><ul><li>工具提供文件与外部系统的操作入口</li><li>状态记录保存进展与中间结果</li><li>检查过程提供纠正错误的依据</li></ul></div>
 </div>
 
-<div class="takeaway">
-  <strong>关键认识：</strong>
-  LLM 很强，但它的强项主要在“生成与判断”，不是“执行与控制”。
-</div>
+<p class="note">模型生成一个操作请求后，还需要软件真正执行这个请求。</p>
+
+<!--
+例如模型能写整理文件的脚本；脚本是否执行、访问哪个目录、结果如何回传，由模型外的软件决定。
+-->
 
 ---
 
-# 最早的 chatbot，天花板在哪里
+# 纯文本问答的边界
 
-<div class="split-2">
-  <div class="image-frame">
-    <img src="/products/chatgpt.png" alt="Web chat example" />
-  </div>
-  <div class="frame">
-    <div class="eyebrow">如果产品形态只是聊天窗口</div>
-    <ul class="wide-list">
-      <li>它可以回答你，但不会自己继续下一步</li>
-      <li>它可以建议你怎么做，但不会替你真正执行</li>
-      <li>它可以给方案，但不会维护任务状态</li>
-      <li>它可以生成答案，但不会验证结果是否真的成立</li>
-    </ul>
-    <div class="takeaway">
-      chatbot 更像“回答器”，不是“任务执行器”。
-    </div>
-  </div>
+<div class="split-2 media-split">
+  <div class="image-frame"><img src="/products/chatgpt.png" alt="聊天产品的对话界面示例" /></div>
+  <div><p class="lead">在没有接入工具的问答模式中：</p><ul><li>材料主要来自当前对话</li><li>输出通常是一段文字或方案</li><li>外部操作由人继续完成</li><li>系统难以观察操作后的实际结果</li></ul></div>
 </div>
 
----
-class: diagram-slide
----
+<p class="note">界面长得像聊天框，并不能说明它有没有执行能力。</p>
 
-<div class="image-frame full-diagram">
-  <img src="/generated-images/from-chat-to-agent.png" alt="从聊天到 Agent：接入环境与工具后推进任务" />
-</div>
+<!--
+截图仅说明对话入口。这里描述纯文本问答模式，不声称当前 ChatGPT 产品只能问答。
+-->
 
 ---
-class: title-compact page-tight
+class: figure-slide
+---
+
+# 从生成回答到执行任务
+
+<div class="diagram-figure"><img src="/generated-images/from-chat-to-agent.png" alt="纯文本问答输出回答；Agent 通过工具操作环境并根据返回结果继续推进" /></div>
+
+<!--
+例如整理文件：模型选择读取目录，软件调用文件工具并返回清单；模型根据清单继续分类或询问缺失条件。
+-->
+
 ---
 
 # Agent 是什么
 
-<p class="lead tight">
-Agent 是一种 AI 应用软件：LLM 参与控制运行过程，而不只是生成一段回答。
-</p>
+<p class="lead">Agent 是由模型参与选择下一步动作、使用工具并处理反馈的 AI 软件系统。</p>
 
-<div class="definition-grid">
-  <div class="compare-card">
-    <h3>先理解软件</h3>
-    <p>软件不是屏幕上的界面，而是一组会被计算机执行的程序、数据和规则。</p>
-    <p class="tiny muted">运行起来以后，它会接收输入、读写状态、调用系统能力或外部 API，并产生输出。</p>
-  </div>
-  <div class="compare-card">
-    <h3>LLM 不是全部</h3>
-    <p>LLM 负责根据上下文判断“下一步应该做什么”。</p>
-    <p class="tiny muted">但读文件、联网、调 Shell、保存任务进度、控制权限，都要由外层软件来完成。</p>
-  </div>
-  <div class="compare-card accent-panel">
-    <h3>Agent 的本质</h3>
-    <p>把 LLM 的判断接到真实的软件能力上，让它参与任务的执行流程。</p>
-    <p class="tiny muted">所以 Agent 至少要有上下文、工具接口、状态记录、权限边界和结束条件。</p>
-  </div>
+<div class="split-3">
+  <div class="term-card"><h3>模型</h3><p>结合当前信息，生成回答或提出下一步操作。</p></div>
+  <div class="term-card"><h3>上下文</h3><p>本轮可见的任务、资料、历史进展和工具结果。</p></div>
+  <div class="term-card accent-panel"><h3>工具与运行层</h3><p>执行操作、记录进展，并驱动下一轮判断。</p></div>
 </div>
 
+<p class="note">软件由程序、数据和规则组成；界面是与用户交互的部分。</p>
 
-<div class="takeaway">
-  <strong>一句话：</strong>
-  Agent 的关键不是“更会聊天”，而是把 LLM 放进一个真实运行的软件系统里，让模型参与决定这个软件接下来要调用什么能力、观察什么结果、什么时候结束任务。
+<!--
+这里的 Agent 指基于 LLM 的软件系统。程序运行起来会接收输入、调用工具并产生输出；持续推进还需要结束条件、错误处理和相应的权限控制。
+-->
+
+---
+
+# 谁决定任务的下一步
+
+<div class="split-3">
+  <div class="compare-card"><div class="eyebrow">问答</div><h3>人继续发起</h3><p>收到回答后，由人决定下一问或下一项操作。</p><div class="example">例如：解释一段文字</div></div>
+  <div class="compare-card"><div class="eyebrow">工作流</div><h3>预设规则控制</h3><p>程序按提前设计的步骤、条件和分支运行。</p><div class="example">例如：每天汇总固定报表</div></div>
+  <div class="compare-card accent-panel"><div class="eyebrow">Agent</div><h3>模型参与选择</h3><p>根据当前情况和工具反馈，动态选择下一步。</p><div class="example">例如：查资料并整理比较结果</div></div>
 </div>
 
+<p class="note">工作流可以包含 Agent 节点；Agent 也可以调用固定流程。</p>
+
 ---
-class: title-compact page-tight
+class: figure-slide
 ---
 
-# Agent 不是什么
+# 模型在 Agent 系统中的位置
 
-<p class="lead tight">
-Chatbot、Workflow 和 Agent 都可以接入模型，但它们控制任务的方式不同。
-</p>
+<div class="diagram-figure"><img src="/generated-images/llm-inside-agent-system.png" alt="Agent 系统中，模型与任务调度、工具、状态、权限和执行环境协同工作" /></div>
 
-<div class="definition-grid">
-  <div class="compare-card">
-    <h3>Chatbot</h3>
-    <p>核心是对话界面，把用户输入转成一段回答。</p>
-    <p class="tiny muted">通常停在“请求 → 回复”，不负责持续维护任务状态。</p>
-    <img src="/products/chatgpt.png" alt="ChatGPT 对话产品截图" />
-  </div>
-  <div class="compare-card">
-    <h3>Workflow</h3>
-    <p>核心是预先写好的流程编排，按固定节点和分支执行。</p>
-    <p class="tiny muted">路径主要由人提前设计，遇到没写进流程的情况不会自己改策略。</p>
-    <img src="/products/n8n.png" alt="n8n workflow 产品截图" />
-  </div>
-  <div class="compare-card accent-panel">
-    <h3>Agent</h3>
-    <p>核心是在运行中判断下一步，调用工具，观察结果，再继续推进。</p>
-    <p class="tiny muted">路径不是完全写死的，而是由模型在软件约束下动态选择。</p>
-    <img src="/products/claude-code.webp" alt="Claude Code agent 产品截图" />
-  </div>
+<!--
+Agent Runtime 是驱动模型、工具与反馈循环的运行层。执行环境是工具实际运行和访问资源的地方，例如本机、浏览器或沙箱。两者不能混作同一个概念。
+-->
+
+---
+class: figure-slide
+---
+
+# Agent Loop：判断、行动与反馈
+
+<div class="diagram-figure"><img src="/generated-images/agent-loop.png" alt="Agent 根据任务判断下一步，调用工具，观察返回结果，再继续判断或结束" /></div>
+
+<!--
+ReAct 是一种常见的 Agent Loop，将推理与行动交替组织。Agent Loop 是更广的概念，两者不完全等同。
+工具结果重新加入上下文；模型可以继续操作、请求补充信息或结束。实际系统还设置次数、时间或成本限制。
+“思考”是对模型选择动作的简化描述，不意味着应用必须显示模型的内部推理。
+-->
+
+---
+class: figure-slide
+---
+
+# Human-in-the-loop：人工参与执行
+
+<div class="diagram-figure"><img src="/generated-images/human-in-the-loop.png" alt="需要确认的操作在执行前交由人批准、修改或拒绝，再继续任务循环" /></div>
+
+<!--
+可以为对外发送、支付、权限变更等操作设置人工确认。审核点由应用和任务配置决定，并非每次读文件或每个普通操作都需要审批。
+人也可以参与澄清目标、选择方案和结果验收；图中展示执行前确认的一种形式。
+-->
+
+---
+
+# 多步任务如何持续推进
+
+<div class="grid-2">
+  <div class="term-card"><h3>Agent Runtime · 运行层</h3><p>安排模型调用和工具执行，处理返回结果、错误与结束条件。</p></div>
+  <div class="term-card"><h3>Tools · 工具</h3><p>提供读取文件、查询网页、处理数据等实际操作。</p></div>
+  <div class="term-card"><h3>State · 任务状态</h3><p>保存计划、已完成步骤、待处理问题和中间产物。</p></div>
+  <div class="term-card accent-panel"><h3>Feedback · 反馈</h3><p>用页面状态、文件内容、计算结果或报错调整下一步。</p></div>
 </div>
 
-<div class="takeaway">
-  <strong>区别：</strong>
-  Chatbot 主要负责回答，Workflow 主要负责按图执行，Agent 主要负责在不确定环境里持续决策和行动。
+<!--
+例如生成表格后再次读取它，检查行数、字段和合计。状态支撑当前任务；跨任务保留信息的 Memory 在第三部分展开。
+-->
+
+---
+
+# Shell：系统命令的执行入口
+
+<div class="split-2 media-split">
+  <div><p class="lead">Shell 接收命令，启动程序，并返回执行结果。</p><ul><li>批量整理文件与目录</li><li>运行脚本、转换格式、计算数据</li><li>调用已安装的软件和命令行工具</li></ul><p class="note">界面负责交互，Agent 组织步骤，Shell 执行具体命令。</p></div>
+  <div class="image-frame"><img src="/products/openclaw-web.avif" alt="通过图形界面与 Agent 交互的产品示例" /></div>
 </div>
 
----
-class: diagram-slide
----
-
-<div class="image-frame full-diagram">
-  <img src="/generated-images/llm-inside-agent-system.png" alt="Agent 是承载 LLM、工具、状态、运行时和权限规则的软件系统" />
-</div>
+<!--
+Shell 可以调用操作系统已有的文件、进程和网络能力。进程是正在运行的程序；命令行是用文本输入操作的方式。
+API 是软件之间约定的调用接口。Agent 也能通过浏览器、文件接口和外部 API 执行任务，不必一律经过 Shell。
+截图用于说明界面与执行能力可以分离，不能根据界面形态推断具体配置。
+-->
 
 ---
-class: title-compact page-tight mechanism-slide
+class: figure-slide
 ---
 
-# Agent Loop：Agent 的最小工作模式
+# 工具与环境共同决定可执行的范围
 
-<p class="lead tight">也被称为 ReAct 模式：不是一次性回答，而是在“思考、行动、观察”之间反复推进，直到任务完成。</p>
+<div class="diagram-figure"><img src="/generated-images/shell-access-boundary.png" alt="Shell、浏览器、文件接口和外部 API 都可提供执行能力，权限与环境限定其访问范围" /></div>
 
-<div class="mechanism-layout">
-  <div class="image-frame mechanism-diagram">
-    <img src="/generated-images/agent-loop.png" alt="Agent Loop：模型反复思考、调用工具、观察结果，并在完成后输出 Final Answer" />
-  </div>
-
-  <div class="frame mechanism-copy">
-    <div class="eyebrow">Agent Loop / ReAct</div>
-    <h3>从“回答问题”变成“推进任务”</h3>
-    <p>初始需求把任务交给 Agent。真正的循环从“思考下一步”开始。</p>
-    <div class="limit-list">
-      <div><strong>思考下一步</strong>：根据当前状态决定要不要调用工具。</div>
-      <div><strong>执行并观察</strong>：工具返回结果后，Agent 把结果重新纳入上下文。</div>
-      <div><strong>判断是否完成</strong>：未完成就继续循环；完成后才输出 Final Answer。</div>
-    </div>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>关键点：</strong>
-  Agent 的“聪明”不只来自模型本身，还来自这个能持续行动、观察和修正的闭环。
-</div>
-
----
-class: title-compact page-tight mechanism-slide
----
-
-# Human-in-the-loop：把人放进 Agent Loop
-
-<p class="lead tight">当工具调用可能影响文件、账号、资金、权限或真实用户时，Agent 不应该直接执行，而是先让人审核。</p>
-
-<div class="mechanism-layout">
-  <div class="image-frame mechanism-diagram">
-    <img src="/generated-images/human-in-the-loop.png" alt="Human-in-the-loop：人类在高风险工具执行前审批、修改或拒绝" />
-  </div>
-
-  <div class="frame mechanism-copy">
-    <div class="eyebrow">Human-in-the-loop</div>
-    <h3>人类负责审核边界</h3>
-    <p>人工审核插在“准备调用工具”和“执行工具”之间，拦住真正会改变外部世界的动作。</p>
-    <div class="limit-list">
-      <div><strong>批准</strong>：动作继续执行，结果再回到观察与判断。</div>
-      <div><strong>修改</strong>：人调整动作边界，让 Agent 回到下一步规划。</div>
-      <div><strong>拒绝</strong>：危险动作不执行，Agent 重新思考替代方案。</div>
-    </div>
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>关键点：</strong>
-  Human-in-the-loop 不是降低自动化，而是在高风险步骤上加入可控的治理边界。
-</div>
-
----
-class: title-compact page-tight
----
-
-# 为什么 Agent 比最早的 chatbot 强很多
-
-<div class="agent-upgrade">
-  <div class="upgrade-baseline">
-    <div class="eyebrow">早期 chatbot 的边界</div>
-    <h3>一次对话，一次回答</h3>
-    <p>模型只看到用户发来的文本，然后生成下一段文本。它可以建议你怎么做，但任务真正发生在哪里、做到哪一步、结果是否成功，通常都不在系统控制里。</p>
-    <div class="limit-list">
-      <div>纯聊天窗口，缺乏软件的运行环境</div>
-      <div>没有远程或本地工具可供调用</div>
-      <div>不知道你处理任务进展状态</div>
-    </div>
-  </div>
-
-  <div class="upgrade-stack">
-    <div class="upgrade-row">
-      <div class="upgrade-index">01</div>
-      <div>
-        <strong>Runtime（运行环境）</strong>
-        <p>Agent 作为软件，需要运行在一个能接触外部环境的 runtime 里。这个运行环境决定它能否读写文件、联网、启动进程、或者访问远程服务。</p>
-      </div>
-    </div>
-    <div class="upgrade-row">
-      <div class="upgrade-index">02</div>
-      <div>
-        <strong>Tool Use（工具调用）</strong>
-        <p>模型不只输出建议，而是提出要求执行特定动作(function call)；agent(身体)收到llm（大脑）的要求，去调用互联网搜索、文件读写、数据库连接、Shell 等工具。Shell 是最强大执行工具(调用操作系统命令)，但是Shell不等于 Runtime。</p>
-      </div>
-    </div>
-    <div class="upgrade-row">
-      <div class="upgrade-index">03</div>
-      <div>
-        <strong>State / Memory</strong>
-        <p>任务计划、中间产物、已尝试方案、环境约束会被保留下来，所以多轮推进不是每次从零开始。</p>
-      </div>
-    </div>
-    <div class="upgrade-row">
-      <div class="upgrade-index">04</div>
-      <div>
-        <strong>Observe / Feedback Loop</strong>
-        <p>每次执行都会产生反馈：命令输出、页面状态、测试结果、报错信息。下一步行动依据建立在以上证据上，而不只是猜测。</p>
-      </div>
-    </div>    
-  </div>
-</div>
-
-<div class="takeaway">
-  <strong>关键区别：</strong>
-  Chatbot 停在“生成答案”；Agent 把 LLM 放进一个有运行环境、有工具调用、有状态记录、有反馈的任务闭环里。
-</div>
-
-
----
-class: title-compact page-tight
----
-
-# Agent哪怕只有shell调用+前端GUI也足够强大
-
-<div class="openclaw-showcase">
-  <div class="frame accent-panel openclaw-copy">
-    <div class="eyebrow">为什么这已经很强</div>
-    <p>
-      这意味着用户可以通过自然语言，间接控制操作系统已经提供的大量基础能力：
-      文件、进程、网络请求、脚本。
-    </p>
-    <div class="limit-list">
-      <div><strong>Shell</strong> 提供操作系统命令执行入口</div>
-      <div><strong>前端 GUI</strong> 把能力包装成普通用户能用的产品</div>
-      <div><strong>Agent</strong> 在中间负责理解目标、触发动作、观察结果</div>
-    </div>
-    <div class="takeaway">
-      最近爆火的 OpenClaw就是一个直观例子，哪怕不额外挂载任何插件，软件初始就让人觉得足够好用。当然OpenClaw还有其能力拓展的方案，比如skill hub社区生态。
-    </div>
-  </div>
-
-  <div class="openclaw-images">
-    <div class="image-frame openclaw-shot">
-      <img src="/products/openclaw-chatbot.png" alt="OpenClaw chatbot interface" />
-    </div>
-    <div class="image-frame openclaw-shot">
-      <img src="/products/openclaw-web.avif" alt="OpenClaw web interface" />
-    </div>
-  </div>
-</div>
-
----
-class: diagram-slide
----
-
-<div class="image-frame full-diagram">
-  <img src="/generated-images/shell-access-boundary.png" alt="Shell 执行能力扩展 Agent 的能力边界" />
-</div>
+<!--
+环境包括文件、网络、账号状态和可用程序。相同模型在不同环境下能完成的任务可能不同；能生成命令与有权限执行命令也是不同的事情。
+-->

@@ -1,96 +1,30 @@
-# 课程配图规划
+# 课程配图资产索引
 
-这个目录只放正式嵌入 Slidev 的课程图片。生成工具的临时输出不要直接在 slides 里引用。
+当前 Slidev 使用以下 **14 张原版图片**，位于 `public/generated-images/`，页面通过 `/generated-images/<文件名>` 引用。此次恢复原图保留 **62 页**及已修改的文字、讲者备注和课程结构。
 
-## 使用规则
+对应的 `*-v2.png` 文件保留供追溯，当前课件不引用。原版图片保持原有构图、标签和视觉表现。
 
-- 图片正式路径：`public/generated-images/`
-- Slidev 引用路径：`/generated-images/<filename>.png`
-- 图片中文字优先使用中文。
-- 旧 SVG 不再使用。
-- 图要服务讲解机制、流程、结构，不做纯装饰。
+## 当前资产
 
-## 当前状态
+| 文件 | 章节 | 主题 |
+|---|---|---|
+| `llm-next-token.png` | Part 1 | LLM 的下一个 token 预测与连续生成。 |
+| `from-chat-to-agent.png` | Part 1 | 从聊天问答到 Agent 执行任务。 |
+| `llm-inside-agent-system.png` | Part 1 | 模型在 Agent 系统中的位置。 |
+| `agent-loop.png` | Part 1 | Agent 的判断、行动与反馈循环。 |
+| `human-in-the-loop.png` | Part 1 | 人工参与 Agent 执行过程。 |
+| `shell-access-boundary.png` | Part 1 | Shell 与 Agent 的执行能力。 |
+| `agent-product-core.png` | Part 2 | Agent 产品入口与工作机制。 |
+| `codex-task-to-result.png` | Part 2 | Codex 从任务到结果的工作流程。 |
+| `agent-capability-stack.png` | Part 3 | Agent 能力组成总览。 |
+| `mcp-primitives.png` | Part 3 | MCP 的 Tools、Resources 与 Prompts。 |
+| `skill-pack.png` | Part 3 | Skill 任务资料包。 |
+| `subagents-task-split.png` | Part 3 | 子 Agent 的任务分工与汇总。 |
+| `harness-system-loop.png` | Part 4 | Harness 与 Agent 执行系统。 |
+| `prompt-context-harness.png` | Part 4 | Prompt、Context 与 Harness 的工程演进。 |
 
-| 文件 | 主题 | 状态 | 嵌入位置 |
-|---|---|---|---|
-| `llm-next-token.png` | LLM 的 next-token prediction 机制 | 已重新生成，提升说明清晰度，并嵌入 | `slides/01-llm-why-agent.md` |
-| `from-chat-to-agent.png` | 从 chatbot 到 agent 的能力升级 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
-| `llm-inside-agent-system.png` | Agent 不是模型本身，而是软件系统 | 已重新生成，移除上下文模块和底部结论条，并嵌入 | `slides/01-llm-why-agent.md` |
-| `react-agent-loop.png` | ReAct / agent loop | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
-| `shell-access-boundary.png` | Shell access 扩展 agent 能力边界 | 已生成并嵌入 | `slides/01-llm-why-agent.md` |
-| `agent-product-core.png` | 不同产品外壳背后的 Agent Core | 已生成并嵌入 | `slides/02-products-and-usage.md` |
-| `codex-task-to-result.png` | Codex 从任务到可验收结果的工作流 | 已生成并嵌入 | `slides/02-products-and-usage.md` |
-| `agent-capability-stack.png` | Agent capability stack 总览 | 已生成并嵌入 | `slides/03-capability-stack.md` |
-| `mcp-primitives.png` | MCP 的 Tools / Resources / Prompts | 已生成并嵌入 | `slides/03-capability-stack.md` |
-| `skill-pack.png` | Skill 是“经验 + 资料 + 脚本 + 规范”的组合包 | 已生成并嵌入 | `slides/03-capability-stack.md` |
-| `subagents-task-split.png` | 复杂任务如何拆给多个 Subagents | 已生成并嵌入 | `slides/03-capability-stack.md` |
-| `harness-system-loop.png` | Harness Engineering 的系统闭环 | 已生成并嵌入 | `slides/04-engineering-evolution.md` |
-| `prompt-context-harness.png` | Prompt -> Context -> Harness 的工程演进 | 已生成并嵌入 | `slides/04-engineering-evolution.md` |
+## 使用与维护
 
-已用来源：
-
-- `llm-next-token.png` 来自 `/Users/kay/.codex/generated_images/019dbe4b-70bb-7630-b7e1-040f4c60f8c8/ig_06f955ccb18578230169eb156c4e7081919476514139065e05.png`，已重新生成以提升 next-token prediction 说明清晰度。
-- `llm-inside-agent-system.png` 来自 `/Users/kay/.codex/generated_images/019dbd1c-2059-7f52-ae23-47cc0f9dd183/ig_09712cfa49d03ca30169eb19aa05a08191945b52e5f9959dc2.png`，已重新生成，移除上下文模块和底部结论条，保留并列组件协作关系。
-
-下面这 5 张图是这套 Slidev 课程里最值得优先补的讲解图。它们覆盖了从 LLM 基本机制、Agent 闭环、MCP 接能力、Skill 复用能力，到 Prompt/Context/Harness 演进的主线。
-
-## 1. `LLM 的基本机制：next-token prediction【配图】`
-
-这张图要帮助听众一眼理解：LLM 不是“先想好整段话再输出”，而是基于前文上下文，持续预测下一个 token，并不断重复这个过程。
-
-**GPT Image 2 中文提示词：**
-
-```text
-设计一张面向企业内部演示的现代信息图，主题是“LLM 的基本机制：next-token prediction”。画面为 16:9 横版，风格干净、克制、信息图感强，不要学术海报风，不要复杂公式。核心内容是用非常直观的方式解释：模型先读取前文上下文，再预测下一个最可能出现的 token，然后把结果接到上下文后面，继续重复这个过程，最终生成整段文本。画面采用从左到右的流程结构：左侧是“输入上下文”，中间是“预测下一个 token”，右侧是“不断重复，生成完整回答”。上下文区域可以用简洁中文词组示意，例如“我 / 今天 / 想 / 讲 / AI / Agent”，下一个 token 区域突出一个候选词元，例如“的”或“是什么”，并用几个较淡的备选 token 表现概率选择，但不要出现数学公式。右下角用一块简洁提示区说明：LLM 擅长生成与局部判断，但天然不等于执行系统。整体视觉要像高质量企业课程中的解释图，中文标签清晰，少量蓝绿灰配色，少量橙色强调，不要太花。
-```
-
-**适合版式：**整页图。
-
-## 2. `ReAct / agent loop：最小工作原理【配图】`
-
-这张图要帮助听众一眼理解：Agent 不是一次性回答，而是“判断 -> 执行 -> 观察 -> 再判断”的循环系统。
-
-**GPT Image 2 中文提示词：**
-
-```text
-设计一张面向企业内部演示的现代信息图，主题是“ReAct / agent loop：最小工作原理”。画面为 16:9 横版，现代、清晰、结构感强，突出 agent 的工作闭环，不要学术风，不要密集公式。核心内容是展示一个围绕任务目标持续运行的循环：用户目标进入系统后，Agent 先进行“Reason（判断）”，再进行“Act（执行动作）”，然后“Observe（读取结果）”，再回到下一轮判断，直到“完成任务”或“停止”。建议用一个大号环形或椭圆循环结构放在画面中央，左侧放“用户目标”，右侧放“完成任务”。在 Act 节点周围用简洁小图标表示 agent 可调用的外部能力，例如终端、文件、浏览器、API。强调这不是单纯的思考流程，而是“判断 + 执行 + 观察”的真实运行闭环。底部加一条简洁说明：当 Act 能真正调用工具和环境时，Agent 就从“回答模式”升级成“执行系统”。整体风格要像企业产品架构说明图，专业但易懂，中文标签清晰，留白充足。
-```
-
-**适合版式：**整页图。
-
-## 3. `MCP 的 3 个原语【配图】`
-
-这张图要帮助听众一眼理解：MCP 的重点不是“一个协议名词”，而是让 agent 通过三种标准原语去拿上下文、调能力、复用任务模板。
-
-**GPT Image 2 中文提示词：**
-
-```text
-设计一张面向企业内部演示的现代信息图，主题是“MCP 的 3 个原语”。画面为 16:9 横版，风格现代、理性、清楚，像一张企业内部技术讲解图，不要复杂网络图，不要花哨 3D 效果。核心内容是解释 MCP 的三个原语：Resources、Tools、Prompts。画面左侧画出“LLM / Agent Client”，右侧画出“MCP Server”，中间用三条清晰的通道连接三种原语。Resources 表示“可读取的外部上下文”，Tools 表示“可调用的外部动作”，Prompts 表示“可复用的任务模板”。可以把三种原语画成三张并列卡片，每张卡片都带一个简短中文解释，并通过箭头连接到 client 和 server。整体要强调：Resources 负责取信息，Tools 负责做事，Prompts 负责复用任务，不要把它画成普通插件列表。配色建议蓝绿灰体系，少量橙色强调，中文标签必须清晰。
-```
-
-**适合版式：**整页图。
-
-## 4. `Skill 是什么`
-
-这张图要帮助听众一眼理解：Skill 不是“又一个 prompt”，而是一个可复用、可分发、带触发条件和执行步骤的任务能力包。
-
-**GPT Image 2 中文提示词：**
-
-```text
-设计一张面向企业内部演示的现代信息图，主题是“Skill 是什么”。画面为 16:9 横版，简洁、现代、讲解感强，不要产品截图，不要复杂插画。核心内容是把 Skill 画成一个“可复用的能力包”：它不是单次提示词，而是一个被整理好的任务模块，里面包含适用场景、执行步骤、输出规范、示例和约束。画面中央可以用一个“Skill Pack / Skill 卡片”作为主体，卡片内分层展示“触发条件”“步骤说明”“示例”“输出标准”“注意事项”。左侧放“普通 prompt”的简化对比，强调 prompt 更像一次性指令；右侧放“Skill 被加载后可重复使用”的流程，强调它可以被 agent 按条件调用。整体风格像企业课程里的概念图，强调“包装、复用、标准化、可执行”，中文标签清楚，少量蓝灰配色，少量橙色点亮重点，不要太花。
-```
-
-**适合版式：**图文左右布局。
-
-## 5. `Prompt -> Context -> Harness 演进图【配图】`
-
-这张图要帮助听众一眼理解：AI 工程重心不是停留在写 prompt，而是随着任务复杂度上升，逐步转向上下文组织和执行框架组织。
-
-**GPT Image 2 中文提示词：**
-
-```text
-设计一张面向企业内部演示的现代信息图，主题是“Prompt -> Context -> Harness 的工程重心演进”。画面为 16:9 横版，风格统一、现代、信息图感强，不要论文海报风。核心目标是解释：AI 工程重心为什么会从 Prompt Engineering 演进到 Context Engineering，再演进到 Harness Engineering。画面采用从左到右的三阶段演进结构，每一阶段是一张大卡片，分别写“Prompt Engineering（提示词工程）”“Context Engineering（上下文工程）”“Harness Engineering（执行框架工程）”。每张卡片下方只放一句非常清楚的问题定义：Prompt 阶段强调“怎么把任务说清楚”；Context 阶段强调“每一步该给模型看什么”；Harness 阶段强调“怎么让整套系统稳定把任务做完”。三张卡片之间不要只是普通箭头，要用“任务复杂度上升”“多工具、多步骤、长任务”“真实执行与反馈闭环”这类中间驱动因素来连接，明确表达这是问题升级导致的工程重心外移，而不是流行词替换。整体要像企业演讲里解释技术演进逻辑的高质量战略图，简洁、强逻辑、强层次，中文标签清晰，蓝绿灰体系，少量橙色强调。
-```
-
-**适合版式：**整页图。
+- 图片来源使用项目内路径；原图与 v2 文件分别保存，避免覆盖。
+- 配图切换不增删页面。变更后核对 62 页、图片加载和完整展示情况。
+- 后续如调整图片版本，同步更新本索引和章节 Markdown 中的引用。

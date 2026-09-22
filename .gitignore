@@ -2,3 +2,7 @@ node_modules
 dist
 .slidev
 *.pdf
+
+# Local presentation QA
+.playwright-cli/
+output/playwright/
